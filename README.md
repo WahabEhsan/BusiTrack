@@ -22,8 +22,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 * [Wahab Ehsan](https://github.com/WahabEhsan)
 * [Avery Anderson](https://github.com/WahabEhsan)
-* [Jaron Dunham](https://github.com/WahabEhsan)
-* [Brandon Chandler](https://github.com/WahabEhsan)
+* [Jaron Dunham](https://github.com/JaronDunham)
+* [Brandon Chandler](https://github.com/clarison608)
 * [Jared Chadwell](https://github.com/WahabEhsan)
 
 
