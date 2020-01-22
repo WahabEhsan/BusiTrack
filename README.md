@@ -10,14 +10,14 @@ Following the MVC architecture, there are two views, a text message view, and a 
 
 ### Built With
 
-HTML
-Python
-Javascript
-CSS
-AWS Lambda 
-AWS EC2 
-Twilio 
-MongoDB
+* HTML
+* Python
+* Javascript
+* CSS
+* AWS Lambda 
+* AWS EC2 
+* Twilio 
+* MongoDB
 
 
 ## Authors
