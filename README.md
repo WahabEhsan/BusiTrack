@@ -23,7 +23,7 @@ MongoDB
 ## Authors
 
 * [Wahab Ehsan](https://github.com/WahabEhsan)
-* [Avery Anderson](https://github.com/aaanderson4)
+* [Avery Anderson](https://github.com/aaander4)
 * [Jaron Dunham](https://github.com/JaronDunham)
 * [Brandon Chandler](https://github.com/clarison608)
 * [Jared Chadwell](https://github.com/jachadwell)
