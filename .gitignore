@@ -1,0 +1,7 @@
+.o
+.pyc
+.class
+*.log
+.lock
+.DS_Store
+.idea/workspace.xml
