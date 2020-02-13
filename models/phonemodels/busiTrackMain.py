@@ -17,19 +17,11 @@ def lambda_handler(event, context):
 
     print(msg_recieved)
 
-    if msg_handling.handler(msg_recieved):
-        msg_sending = "Understood"
-    else:
+    if not msg_handling.handler(msg_recieved):
         msg_sending = "Command not found. Make sure everything spelled correctly."
+    else:
+        msg_sending = "Understand"
     print("Received event: " + str(event))
 
     return '<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>' + msg_sending + '</Message></Response>'
 
-
-def main():
-    event = {'Body': "hello"}
-    print(lambda_handler(event, context=""))
-
-
-if __name__ == "__main__":
-    main()

@@ -5,18 +5,20 @@ class Command:
     def __init__(self, command_str):
         self.command_str = command_str
 
-    def check_command(self, command_str):
-        if command_str not in self.available_command_str:
+    def check_command(self):
+        if self.command_str not in self.available_command_str:
             return False
-
-
-available_command = ["add", "withdraw", "help", "change", "view"]
+        else:
+            return True
 
 
 def handler(msg_command):
-    msg_list = msg_command.split(" ")
-    command_object = Command(msg_list[0])
-    if str(command_object) in available_command:
-        command_object = False
+    msg_list = msg_command.split("+")
+    incoming_command = msg_list[0].lower()
+
+    command_object = Command(incoming_command)
+    if not command_object.check_command():
+        return False
+
     return command_object
 
