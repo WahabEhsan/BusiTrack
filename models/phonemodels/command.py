@@ -1,4 +1,4 @@
-import add
+# Wahab Ehsan
 
 
 class Command:
@@ -14,9 +14,20 @@ class Command:
             return response
         else:
             if self.command_str == "add":
-                response = add.initiate(msg_list)
+                response = self.add_initiate(msg_list)
             elif self.command_str == "withdraw":
-                response = withdraw.initiate(msg_list)
+                response = self.withdraw_initiate(msg_list)
             else:
                 response = "There was a problem understanding that command. Please try again later."
             return response
+
+    @classmethod
+    def add_initiate(cls, msg_list):
+        amount = msg_list[1]
+        return "$" + amount + " added."
+
+    @classmethod
+    def withdraw_initiate(cls, msg_list):
+        amount = msg_list[1]
+        return "$" + amount + " withdrawn."
+
