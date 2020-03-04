@@ -27,7 +27,7 @@ class Command:
 
     @classmethod
     def add_initiate(cls, msg_list):
-        user_info = {businesses_short_name: ["Business1", "Business2"]}
+        user_info = {'businesses_short_name': ["Business1", "Business2"]}
         response = amount_commands_check(msg_list, user_info)
         if not response:
             return response
@@ -35,7 +35,7 @@ class Command:
 
     @classmethod
     def withdraw_initiate(cls, msg_list):
-        user_info = {businesses_short_name: ["Business1", "Business2"]}
+        user_info = {'businesses_short_name': ["Business1", "Business2"]}
         response = amount_commands_check(msg_list, user_info)
         if not response:
             return response
