@@ -5,11 +5,11 @@ import msg_handling
 
 
 def lambda_handler(event, context):
-    msg_recieved = event['Body']
+    msg_received = event['Body']
 
-    print(msg_recieved)
+    print(msg_received)
 
-    response = msg_handling.handler(msg_recieved)
+    response = msg_handling.handler(msg_received)
 
     if not response:
         msg_sending = "Command not found. Make sure everything is spelled correctly."
