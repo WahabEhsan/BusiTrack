@@ -26,22 +26,6 @@ class Command:
             return response
 
     @classmethod
-    def add_initiate(cls, msg_list):
-        user_info = {'businesses_short_name': ["Business1", "Business2"]}
-        response = amount_commands_check(msg_list, user_info)
-        if not response:
-            return response
-        return "$" + amount + " added."
-
-    @classmethod
-    def withdraw_initiate(cls, msg_list):
-        user_info = {'businesses_short_name': ["Business1", "Business2"]}
-        response = amount_commands_check(msg_list, user_info)
-        if not response:
-            return response
-        return "$" + amount + " withdrawn."
-
-    @classmethod
     def amount_commands_check(cls, msg_list, user_info):
         if len(msg_list) != 4:
             return "Incorrect Format. Type 'h' for help."
@@ -52,6 +36,24 @@ class Command:
         if business_name not in user_info['businesses_short_name']:
             return "Make sure to type your business name correctly. Type 'h' for help."
         return True
+
+    @classmethod
+    def add_initiate(cls, msg_list):
+        user_info = {'businesses_short_name': ["Business1", "Business2"]}
+        amount = msg_list[1]
+        response = cls.amount_commands_check(msg_list, user_info)
+        if response is not True:
+            return response
+        return "$" + amount + " added."
+
+    @classmethod
+    def withdraw_initiate(cls, msg_list):
+        user_info = {'businesses_short_name': ["Business1", "Business2"]}
+        amount = msg_list[1]
+        response = cls.amount_commands_check(msg_list, user_info)
+        if response is not True:
+            return response
+        return "$" + amount + " withdrawn."
 
     @classmethod
     def view_initiate(cls):
