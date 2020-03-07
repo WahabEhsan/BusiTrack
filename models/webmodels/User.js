@@ -1,16 +1,24 @@
-var bcrypt = require('bcrypt');
-var saltRounds = 10;
+var mongoose = require('mongoose');
+var bcrypt = require("bcrypt");
+var businessClass require('../app/models/BusinessClass');
 
-
-function hashGenerator(user, pass){
-	var bcrypt = require('bcrypt');
-var saltRounds = 10;
-	slam = user+pass;
-	bcrypt.hash(slam, saltRounds, (err, hash) => {
-	if (err) {
-    console.error(err)
-    return
-  }
-  console.log(hash)
-})
+var userSchema = mongoose.Schema({
+    local: {
+            username:String,
+            password:String,
+			business:[businessClass]
+            }
+});
+userSchema.methods.generateHash = function(password){
+    return bycrypt.hashSync(password, bcrypt.genSaltSync(9));
 }
+userSchema.methods.validPassword = function(password){
+    return bcrypt.compareSync(password, this.local.password);
+}
+userSchema.methods.addBusiness = function(business){
+	this.local.business.push(business)
+}
+userSchema.methods.updateBusiness = function(business){
+	this.local.business = business
+}
+module.exports = mongoose.model('User', userSchema);
