@@ -1,0 +1,41 @@
+﻿body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+	height: 100px;
+	width: 100%;
+	float: left;
+
+	background-color: #666;
+  	padding: 30px;
+  	text-align: center;
+  	font-size: 35px;
+  	color: white;		
+
+}
+		
+.section {
+	height: 500px;
+	width: 100%;
+	float: left;
+			
+	background-color: #f1f1f1;
+  	padding: 10px;
+  
+}
+
+.footer {
+	height: 20px;
+	width: 100%;
+	float: left;
+
+	background-color: #666;
+  	padding: 30px;
+  	text-align: center;
+  	font-size: 35px;
+  	color: white;		
+
+}
+
+
