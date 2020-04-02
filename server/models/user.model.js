@@ -1,4 +1,6 @@
-const userSchema = new userSchema({
+const mongoose = require('mongoose');
+
+const userSchema = new mongoose.Schema({
     username: String,
     id: String,
     email: String,
