@@ -6,38 +6,11 @@ class login extends React.Component {
     constructor(props) {
       super(props);
 	}
-    
-    state = {
-     uname: '',
-     psw: '',
-     remember: false
-	};
-
-    handleChange = (event) => {
-      const input = event.target;
-      const value = input.type === 'checkbox' ? input.checked : input.value;
-
-      this.setState({ [input.name]: value});
-	};
-
-    handleFormSubmit = () => {
-         const {uname, psw, remember} = this.state; 
-         sessionStorage.setItem('remember',remember);
-         sessionStorage.setItem('uname', remember ? uname: '');
-         sessionStorage.setItem('psw', remember ? psw: '');
-    };
-
-    componentDidMount() {
-            const remember = localStorage.getItem('remember') === 'true';
-            const uname = remember ? localStorage.getItem('uname') : '';
-            const psw = remember ? localStorage.getItem('psw') : '';
-            this.setState({ uname, psw, remember });
-}
 
 	render() {
 			return <div class = "form"> 
-                        
-					 <form onSubmit={this.handleFormSubmit}>
+					 
+                     <form method="post" action="\login">
                           <div class="imgcontainer">
                          
                           </div>
