@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for UNCG capstone project: BusiTrack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jared Chadwell",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "latest",
+    "body-parser": "latest",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "latest",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "express-session": "latest",
+    "mongodb": "latest",
+    "mongoose": "^5.9.7",
+    "morgan": "^1.5.3",
+    "passport": "~0.2.1",
+    "passport-local": "~1.0.0"
+  }
+}
