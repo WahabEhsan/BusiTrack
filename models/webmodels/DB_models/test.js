@@ -54,9 +54,10 @@ function main(){
 	
 	/**FOR BUSINESS DATA**/
 	//HEADER: create business
-	//var test = require('./createBusiness');
-	//var con = require('./connect.js');
-	//test.main(hash, 'Donut Store');
+	var test = require('./createBusiness');
+	var con = require('./connect.js');
+	var input = ['Gift Shop', 'Gift']
+	test.main(hash, input);
 	
 	//HEADER: delete business
 	//var test = require('./deleteBusiness.js');
