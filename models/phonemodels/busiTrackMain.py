@@ -2,6 +2,7 @@ from __future__ import print_function
 #from twilio.twiml.messaging_response import Message, MessagingResponse
 #from twilio.rest import Client
 import msg_handling
+from phone_user import User
 
 
 def lambda_handler(event, context):
@@ -9,13 +10,18 @@ def lambda_handler(event, context):
 
     print(msg_received)
 
-    response = msg_handling.handler(msg_received)
+    user_object = User(event['From'])
 
-    if not response:
-        msg_sending = "Command not found. Make sure everything is spelled correctly."
+    if not user_object.check_user():
+        msg_sending = "Hello! Welcome To BusiTrack. In order to use this service you have to signup at our website: " \
+               "\nhttp://ec2-52-15-53-59.us-east-2.compute.amazonaws.com:3000/"
     else:
-        msg_sending = response
-    print("Received event: " + str(event))
+        response = msg_handling.handler(msg_received)
+
+        if not response:
+            msg_sending = "Command not found. Make sure everything is spelled correctly."
+        else:
+            msg_sending = response
+        print("Received event: " + str(event))
 
     return '<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>' + msg_sending + '</Message></Response>'
-

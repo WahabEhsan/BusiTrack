@@ -1,5 +1,10 @@
 # Wahab Ehsan
 
+import sys
+
+sys.path.append( './../../controllers/phonecontrollers')
+import database_translator
+
 
 class Command:
 
@@ -44,6 +49,9 @@ class Command:
         response = cls.amount_commands_check(msg_list, user_info)
         if response is not True:
             return response
+
+        if not database_translator.update():
+            return "Something went wrong, message that command again later."
         return "$" + amount + " added."
 
     @classmethod
