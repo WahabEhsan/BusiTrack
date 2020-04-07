@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './login.css';
+import { Link } from 'react-router-dom';
 
 class login extends React.Component {
     constructor(props) {
@@ -15,16 +16,20 @@ class login extends React.Component {
                          
                           </div>
 
+                          	<Link to="/" className="nav-link">
+				                Temp assess to home
+			                </Link>
+
                           <div class="container">
                             <label for="uname"><b>Username</b></label>
-                            <input type="text" value={this.state.uname} placeholder="Enter Username -" name="uname"  onChange={this.handleChange} required />
+                            <input type="text"  placeholder="Enter Username -" name="uname" required />
 
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" value={this.state.psw} placeholder="Enter Password - " name="psw"  onChange={this.handleChange} required />
+                            <input type="password"  placeholder="Enter Password - " name="psw"  required />
 
                             <button type="submit">Login</button>
                             <label>
-                              <input type="checkbox" checked={this.state.rememberMe} name="remember" /> Remember me
+                              <input type="checkbox" name="remember" /> Remember me
                             </label>
                           </div>
 
