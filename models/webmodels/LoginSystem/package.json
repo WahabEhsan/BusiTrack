@@ -9,16 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "~4.12.3",
-    "morgan": "~1.5.2",
+    "bcrypt": "latest",
+    "body-parser": "latest",
+    "connect-flash": "~0.1.1",
     "cookie-parser": "latest",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
     "express-session": "latest",
     "mongoose": "latest",
-    "ejs": "latest",
-    "body-parser": "latest",
+    "mongodb": "latest",
+    "morgan": "^1.5.3",
     "passport": "~0.2.1",
-    "passport-local": "~1.0.0",
-    "connect-flash": "~0.1.1",
-    "bcrypt": "~0.8.1"
+    "passport-local": "~1.0.0"
   }
 }
