@@ -1,4 +1,4 @@
-var User = require('./models/user');
+var User = require('./models/user.js');
 module.exports = function(app, passport){
 	app.get('/', function(req, res){
 		res.render('index.ejs');
