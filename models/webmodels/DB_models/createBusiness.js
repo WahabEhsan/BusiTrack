@@ -12,7 +12,7 @@ module.exports.main = function main(hash, input){
 		
 		var query = {id: hash};
 
-		var newBusiness = {businessName: input, employee: [], manager: [], inventory: [], expenses: []};
+		var newBusiness = {businessName: input[con.zero], phoneAbrv: input[con.one], employee: [], manager: [], inventory: [], expenses: []};
 	
 		var newValue = {$push: {businesses: newBusiness}};
 	
