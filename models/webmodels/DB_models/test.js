@@ -54,10 +54,10 @@ function main(){
 	
 	/**FOR BUSINESS DATA**/
 	//HEADER: create business
-	var test = require('./createBusiness');
-	var con = require('./connect.js');
-	var input = ['Gift Shop', 'Gift']
-	test.main(hash, input);
+	//var test = require('./createBusiness');
+	//var con = require('./connect.js');
+	//var input = ['Gift Shop', 'Gift'];
+	//test.main(hash, input);
 	
 	//HEADER: delete business
 	//var test = require('./deleteBusiness.js');
@@ -148,15 +148,14 @@ function main(){
 	//HEADER: update item in inventory 
 	//var test = require('./updateInv.js');
 	//var input = ['stock', '01', '8'];
-	////var input = ['contact', '323456789', 'Phone: 13362020202'];
 	//test.main(hash, input);
 	
 	
 	/**FOR EXPENSE DATA**/
-	//HEADER: add to inventory
-	//var test = require('./addInv.js');
-	//var input = ['01', 'Strawberry Cheesecake', '$25.00', '10'];
-	//test.main(hash, 'Bakery', input);
+	//HEADER: add to expenses
+	//var test = require('./addExp.js');
+	//var input = '13364024550';
+	//test.main(input, 'Gift');
 	
 	//HEADER: delete from inventory
 	//var test = require('./deleteInv.js');
@@ -164,10 +163,10 @@ function main(){
 	//test.main(hash, input);
 	
 	//HEADER: update item in inventory 
-	//var test = require('./updateInv.js');
-	//var input = ['stock', '01', '8'];
-	////var input = ['contact', '323456789', 'Phone: 13362020202'];
-	//test.main(hash, input);
+	var test = require('./updateExp.js');
+	test.main('13364024550', 'Bakery', 'Add', parseFloat('4.99'));
+	
+	
 	
 }
 
