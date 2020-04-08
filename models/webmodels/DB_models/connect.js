@@ -10,5 +10,8 @@ module.exports = {
 	three: 3,
 	four: 4,
 	five: 5,
-	six: 6
+	six: 6,
+	tea: 'T',
+	add: "Add",
+	subtract: "Withdraw"
 };
