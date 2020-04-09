@@ -1,17 +1,16 @@
-import js2py
+import sys
 
-# Use jsFile as variable to call js functions from example.js
-#eval_res, jsFile = js2py.run_file('example.js')
-
-
-def get_one():
-    #jsFile.
-    return "Test112233"
+sys.path.append('./../../dbms/phone_dbmodel')
+import phone_db
 
 
-def get_all():
-    return [1, 2, 3]
+def get_user(phone_number):
+    return phone_db.get_user(phone_number)
 
 
-def update():
-    return True
+def update_db(phone_number, message_list):
+    return phone_db.insert_entry(phone_number, message_list)
+
+
+def update_last_msg(phone_number, msg):
+    return phone_db.update_last_msg(phone_number, msg)
