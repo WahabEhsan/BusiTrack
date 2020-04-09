@@ -10,7 +10,7 @@ def lambda_handler(event, context):
 
     print(msg_received)
 
-    user_object = User(event['From'])
+    user_object = User(event['From'], msg_received)
 
     if not user_object.check_user(event['From']):
         msg_sending = "Hello! Welcome To BusiTrack. In order to use this service you have to signup at our website: " \
@@ -24,12 +24,14 @@ def lambda_handler(event, context):
             msg_sending = response
         print("Received event: " + str(event))
 
+    user_object.update_last_msg(event['From'], msg_received)
+
     return '<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>' + msg_sending + '</Message></Response>'
 
 
 def main():
-    event = {'Body': "Add 200 to Gift",
-             "From": '13364176628'}
+    event = {'Body': "add 10 to Bake",
+             "From": '+13364024550'}
     context = ""
     print(lambda_handler(event, context))
 

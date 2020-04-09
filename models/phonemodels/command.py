@@ -8,20 +8,20 @@ import database_translator
 
 class Command:
 
-    available_command_str = ["Add", "withdraw", "h", "view"]
+    available_command_str = ["add", "withdraw", "h", "view"]
 
     def __init__(self, command_str):
         self.command_str = command_str
 
-    def check_command(self, msg_list, number, msg):
+    def check_command(self, msg_list, number):
         response = False
         if self.command_str not in self.available_command_str:
             return response
         else:
-            if self.command_str == "Add":
-                response = self.add_initiate(msg_list, number, msg)
+            if self.command_str == "add":
+                response = self.add_initiate(msg_list, number)
             elif self.command_str == "withdraw":
-                response = self.withdraw_initiate(msg_list)
+                response = self.withdraw_initiate(msg_list, number)
             elif self.command_str == "view":
                 response = self.view_initiate()
             elif self.command_str == "h":
@@ -31,39 +31,34 @@ class Command:
             return response
 
     @classmethod
-    def amount_commands_check(cls, msg_list, user_info):
+    def amount_commands_check(cls, msg_list):
         if len(msg_list) != 4:
             return "Incorrect Format. Type 'h' for help."
         amount = msg_list[1]
-        business_name = msg_list[3]
         if not str(amount).isdigit():
             return "Incorrect Format. Make sure to type command properly. Type 'h' for help."
-        if business_name not in user_info['businesses_short_name']:
-            return "Make sure to type your business name correctly. Type 'h' for help."
         return True
 
     @classmethod
-    def add_initiate(cls, msg_list, phone_number, msg):
-        user_info = {'businesses_short_name': ["Business1", "Business2", "Gift"]}
+    def add_initiate(cls, msg_list, phone_number):
         amount = msg_list[1]
-        response = cls.amount_commands_check(msg_list, user_info)
+        response = cls.amount_commands_check(msg_list)
         if response is not True:
             return response
-
-        if not database_translator.update(phone_number, msg):
-            return "Something went wrong, message that command again later."
+        db_update = database_translator.update_db(phone_number, msg_list)
+        if db_update is not True:
+            return db_update
         return "$" + amount + " added."
 
     @classmethod
-    def withdraw_initiate(cls, msg_list, phone_number, msg):
-        user_info = {'businesses_short_name': ["Business1", "Business2", "Gift"]}
+    def withdraw_initiate(cls, msg_list, phone_number):
         amount = msg_list[1]
-        response = cls.amount_commands_check(msg_list, user_info)
+        response = cls.amount_commands_check(msg_list)
         if response is not True:
             return response
-
-        if not database_translator.update(phone_number, msg):
-            return "Something went wrong, message that command again later."
+        db_update = database_translator.update_db(phone_number, msg_list)
+        if db_update is not True:
+            return db_update
         return "$" + amount + " withdrawn."
 
     @classmethod
