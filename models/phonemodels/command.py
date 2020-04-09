@@ -2,24 +2,24 @@
 
 import sys
 
-sys.path.append( './../../controllers/phonecontrollers')
+sys.path.append('./../../controllers/phonecontrollers')
 import database_translator
 
 
 class Command:
 
-    available_command_str = ["add", "withdraw", "h", "view"]
+    available_command_str = ["Add", "withdraw", "h", "view"]
 
     def __init__(self, command_str):
         self.command_str = command_str
 
-    def check_command(self, msg_list):
+    def check_command(self, msg_list, number, msg):
         response = False
         if self.command_str not in self.available_command_str:
             return response
         else:
-            if self.command_str == "add":
-                response = self.add_initiate(msg_list)
+            if self.command_str == "Add":
+                response = self.add_initiate(msg_list, number, msg)
             elif self.command_str == "withdraw":
                 response = self.withdraw_initiate(msg_list)
             elif self.command_str == "view":
@@ -43,24 +43,27 @@ class Command:
         return True
 
     @classmethod
-    def add_initiate(cls, msg_list):
-        user_info = {'businesses_short_name': ["Business1", "Business2"]}
+    def add_initiate(cls, msg_list, phone_number, msg):
+        user_info = {'businesses_short_name': ["Business1", "Business2", "Gift"]}
         amount = msg_list[1]
         response = cls.amount_commands_check(msg_list, user_info)
         if response is not True:
             return response
 
-        if not database_translator.update():
+        if not database_translator.update(phone_number, msg):
             return "Something went wrong, message that command again later."
         return "$" + amount + " added."
 
     @classmethod
-    def withdraw_initiate(cls, msg_list):
-        user_info = {'businesses_short_name': ["Business1", "Business2"]}
+    def withdraw_initiate(cls, msg_list, phone_number, msg):
+        user_info = {'businesses_short_name': ["Business1", "Business2", "Gift"]}
         amount = msg_list[1]
         response = cls.amount_commands_check(msg_list, user_info)
         if response is not True:
             return response
+
+        if not database_translator.update(phone_number, msg):
+            return "Something went wrong, message that command again later."
         return "$" + amount + " withdrawn."
 
     @classmethod

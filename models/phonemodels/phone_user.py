@@ -12,9 +12,9 @@ class User:
         self.phone_number = phone_number
 
     @staticmethod
-    def check_user(self):
+    def check_user(number):
         response = True
-        if not database_translator.get_one():
+        if not database_translator.get_one(number):
             response = False
         return response
 
