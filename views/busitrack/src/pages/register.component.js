@@ -11,7 +11,7 @@ class login extends React.Component {
 	render() {
 			return <div class = "form"> 
 					  <p style={{fontSize: 20}} > Register </p>
-                     <form method="post" action="\login">
+                     <form method="post" action="/signup">
                           <div class="imgcontainer">
                          
                           </div>

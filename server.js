@@ -3,7 +3,7 @@ var app = express();
 var port = process.env.PORT || 8080;
 
 //var path = require('path');
-//var cors = require('cors');
+var cors = require('cors');
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
@@ -18,6 +18,9 @@ var configDB = require('./config/database.js');
 mongoose.connect(configDB.url,{useNewUrlParser:true,useUnifiedTopology:true});
 require('./config/passport')(passport);
 
+
+
+app.use(cors());
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -32,6 +35,12 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 app.set('view engine', 'ejs');
 
 require('./app/routes.js')(app, passport);
+
+////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////
+
+
 
 app.listen(port);
 console.log('Server running on port: ' + port);

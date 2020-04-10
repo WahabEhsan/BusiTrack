@@ -1,13 +1,15 @@
 var User = require('./models/user.js');
 module.exports = function(app, passport){
 	app.get('/', function(req, res){
-		res.render('index.ejs');
+		res.render('loginOURS.ejs', { message: req.flash('loginMessage') });
 	});
 
 	app.get('/login', function(req, res){
+		//console.log('success');
 		res.render('loginOURS.ejs', { message: req.flash('loginMessage') });
 	});
 	app.post('/login', passport.authenticate('local-login', {
+		
 		successRedirect: '/profile',
 		failureRedirect: '/login',
 		failureFlash: true

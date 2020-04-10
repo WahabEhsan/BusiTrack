@@ -10,6 +10,7 @@ import business from "./pages/business.component";
 import settings from "./pages/settings.component";
 import register from "./pages/register.component";
 
+
 function App() {
   return (
     <Router>
