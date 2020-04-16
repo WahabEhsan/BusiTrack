@@ -2,10 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
-
 import home from "./pages/home.component";
-import login from "./pages/login.component";
-import register from "./pages/register.component";
 import userpage from "./pages/userpage.component";
 
 function App() {

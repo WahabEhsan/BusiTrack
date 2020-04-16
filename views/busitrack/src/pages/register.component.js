@@ -11,14 +11,14 @@ class login extends React.Component {
 	render() {
 			return <div class = "form"> 
 					  <p style={{fontSize: 20}} > Register </p>
-                     <form method="post" action="\login">
+                     <form method="post" action="/signup">
                           <div class="imgcontainer">
                          
                           </div>
 
-                          	<Link to="/" className="nav-link">
-				                Temp access to home
-			                </Link>
+                            <form action="/user">
+                            <button type="submit"> Temp Access to home </button>
+                            </form>
 
                           <div class="container">
                             <label for="uname"><b>Username</b></label>
@@ -26,13 +26,6 @@ class login extends React.Component {
 
                             <label for="psw"><b>Password</b></label>
                             <input type="password"  placeholder="Enter Password - " name="psw"  required />
-
-                                  <label for="cpsw"><b>Confirm Password</b></label>
-                            <input type="password"  placeholder="Confirm Password - " name="psw"  required />
-
-                             <label for="phone"><b>Enter Phone Number</b></label>
-                            <input type="password"  placeholder="Enter Phone Number - " name="psw"  required />
-
 
                             <button type="submit">Register</button>
                           </div>

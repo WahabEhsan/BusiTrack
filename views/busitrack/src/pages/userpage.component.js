@@ -7,15 +7,10 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Navbar from "./navbar.component.js";
 import businessCards from "./businessCards.component";
 import settings from "./settings.component.js";
-import Navbar2 from "./navbar.component2.js";
-
-
-
 
 export default class home extends Component {
     constructor(props) {
       super(props);
-	  	
 	}
 
 	
@@ -30,11 +25,7 @@ export default class home extends Component {
 			<br />
 
 			 <Route path="/settings" component={settings} />
-			 <Route path="/" exact component={businessCards} />
-
-
-
-			
+			 <Route path="/user" exact component={businessCards} />
 
 			</div>
 			</Router> 
