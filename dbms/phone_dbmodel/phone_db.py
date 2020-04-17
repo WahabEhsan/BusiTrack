@@ -61,9 +61,11 @@ def update_last_msg(user_phone, msg):
     return True
 
 
-
-#insert_entry("+13364176628", ["withdraw", "2.90", "from", "kfc"])
-
-#print(get_user('13364024550'))
-
-#update_last_msg("+13364176628", "Testiung")
+def get_businesses(user_phone):
+    user_info = get_user(user_phone)
+    businesses = []
+    for busi in user_info['businesses']:
+        businesses.append(busi['businessName'])
+    if len(businesses) == 0:
+        return False
+    return businesses

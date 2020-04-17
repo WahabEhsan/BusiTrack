@@ -23,7 +23,7 @@ class Command:
             elif self.command_str == "withdraw":
                 response = self.withdraw_initiate(msg_list, number)
             elif self.command_str == "view":
-                response = self.view_initiate()
+                response = self.view_initiate(number)
             elif self.command_str == "h":
                 response = self.h_initiate()
             else:
@@ -62,12 +62,17 @@ class Command:
         return "$" + amount + " withdrawn."
 
     @classmethod
-    def view_initiate(cls):
-        businesses_info = "Your added businesses: \n\n" \
-                          "1) Business1\n" \
-                          "2) Business2\n" \
-                          "3) Business3\n"
-        return businesses_info
+    def view_initiate(cls, phone_number):
+        counter = 0
+        response = "Your added businesses: \n\n"
+        businesses_info = database_translator.get_businesses(phone_number)
+        if businesses_info is False:
+            return "No business found. Go to you account and add a business first, also remember to use the phone abbreviation when using commands. Type 'h' for help."
+        for busi in businesses_info:
+            counter += 1
+            response += str(counter) + ") " + busi + "\n"
+        response += "\nNote: These are not the abbreviations that you will use for commands but just the titles of your businesses."
+        return response
 
     @classmethod
     def h_initiate(cls):
