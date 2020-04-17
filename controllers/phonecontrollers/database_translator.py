@@ -14,3 +14,7 @@ def update_db(phone_number, message_list):
 
 def update_last_msg(phone_number, msg):
     return phone_db.update_last_msg(phone_number, msg)
+
+
+def get_businesses(user_phone):
+    return phone_db.get_businesses(user_phone)
