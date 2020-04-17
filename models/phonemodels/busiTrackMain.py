@@ -29,4 +29,4 @@ def lambda_handler(event, context):
 
     user_object.update_last_msg(num_from, msg_received)
     
-return '<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>' + str(msg_sending) + '</Message></Response>'
+    return '<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>' + str(msg_sending) + '</Message></Response>'
