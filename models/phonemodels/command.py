@@ -32,11 +32,14 @@ class Command:
 
     @classmethod
     def amount_commands_check(cls, msg_list):
+        response = "Incorrect Format. Make sure to type command properly. Type 'h' for help."
         if len(msg_list) != 4:
             return "Incorrect Format. Type 'h' for help."
         amount = msg_list[1]
-        if not str(amount).isdigit():
-            return "Incorrect Format. Make sure to type command properly. Type 'h' for help."
+        try:
+            float(amount)
+        except ValueError:
+            return response
         return True
 
     @classmethod

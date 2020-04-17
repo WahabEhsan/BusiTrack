@@ -14,7 +14,7 @@ def insert_entry(user_phone, message_list):
     response = True
     business_flag = False
     user_info = get_user(user_phone)
-    if len(user_info['businesses']) == 0:
+    if len(user_info['businesses']) == 0 or user_info['businesses'] is None:
         return "No businesses were found. Make sure to add a business first. Type 'h' for help."
     for business in user_info['businesses']:
         if business['phoneAbrv'] == message_list[3]:
