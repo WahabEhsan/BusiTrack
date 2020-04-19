@@ -1,46 +1,77 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from 'react';
 import './login.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-class login extends React.Component {
-     constructor(props) {
-    super(props);
-
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
-    this.state = {
-      username: ''
+import quearystring from 'querystring';
+class login extends Component {
+     constructor() {
+    super();
+	this.state = {
+      username: '',
+	  password: '',
+	  redirectTo: null
     }
+   
+   this.handleSubmit = this.handleSubmit.bind(this)
+   this.handleChange = this.handleChange.bind(this)
+
+ 
   }
+  
+  
 
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    })
-  }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const user = {
-      username: this.state.username
+  handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     }
 
-    console.log(user);
+  handleSubmit(event) {
+        event.preventDefault()
+        console.log('handleSubmit')
 
-    axios.post('http://localhost:8080/login', user)
+        axios
+            .post('http://localhost:8080/login', {
+                username: this.state.username,
+                password: this.state.password
+            })
+            .then(response => {
+                console.log('login response: ')
+                console.log(response)
+                if (response.status === 200) {
+                    // update App.js state
+                    this.props.updateUser({
+                        loggedIn: true,
+                        username: response.data.username
+                    })
+                    // update the state to redirect to home
+                    this.setState({
+                        redirectTo: '/'
+                    })
+                }
+            }).catch(error => {
+                console.log('login error: ')
+                console.log(error);
+                
+            })
+    
+		/*event.preventDefault()
+        console.log('handleSubmit')
+
+        axios.post('http://localhost:8080/login', {
+			username: this.state.username,
+			password: this.state.passord
+		})
       .then(res => console.log(res.data));
-
-    this.setState({
-      username: ''
-    })
-  }
+             
+			/* axios.post('http://localhost:8080/login', user)
+      .then(res => console.log(res.data));*/
+                
+            }
+    
 
 	render() {
-			return <div class = "form"> 
+			return <div class = "form-group"> 
 
                       <p style={{fontSize: 20}} > Login </p>
 					 
@@ -55,17 +86,25 @@ class login extends React.Component {
 
                           <div class="container">
                             <label for="uname"><b>Username</b></label>
-                            <input  type="text"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-                />
+                            <input className="form-input"
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    placeholder="Username"
+                                    value={this.state.username}
+                                    onChange={this.handleChange}
+                                />
 
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" value={this.state.password} onChange={this.changePassword} placeholder="Enter Password - " name="psw"  required />
+                            <input className="form-input"
+                                    placeholder="password"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                />
 
-                            <button type="submit">Login</button>
+                            <button type="submit" onClick={this.handleSubmit}>Login</button>
                             <label>
                               <input type="checkbox" name="remember" /> Remember me
                             </label>
@@ -75,8 +114,7 @@ class login extends React.Component {
 
                           <div class="container" style={{backgroundColor: '#f1f1f1'}}>
                             <button type="button" class="cancelbtn">Cancel</button>
-                            <span class="psw">Forgot <a href="#">password?</a></span>
-                          </div>
+                           </div>
                         </form>          
 			</div>
 	}

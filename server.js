@@ -19,11 +19,12 @@ mongoose.connect(configDB.url,{useNewUrlParser:true,useUnifiedTopology:true});
 require('./config/passport')(passport);
 
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(cors());
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({secret: 'anystringoftext',
 				 saveUninitialized: true,
 				 resave: true}));
@@ -31,7 +32,6 @@ app.use(session({secret: 'anystringoftext',
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-
 app.set('view engine', 'ejs');
 
 require('./app/routes.js')(app, passport);

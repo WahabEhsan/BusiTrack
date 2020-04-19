@@ -27,8 +27,23 @@
 					<p>
 						<strong>id</strong>: <%= user._id %><br>
 						<strong>email</strong>: <%= user.local.username %><br>
-						<strong>password</strong>: <%= user.local.password %>
+						<strong>password</strong>: <%= user.local.password %><br>
+						<strong>business</strong>: <%= user.local.business %><br>
+						<strong>object</strong>: <%= user.local.object %>
 					</p>
+					
+		<form action="/updatedata" method="post">
+		<div class="form-group">
+			<label>business</label>
+			<input type="text" class="form-control" name="business" id="business">
+		</div>
+		<div class="form-group">
+			<label>object</label>
+			<input type="text" class="form-control" name="object">
+		</div>
+
+		<button type="submit" class="btn btn-warning btn-lg">Login</button>
+	</form>
 
 			</div>
 		</div>
