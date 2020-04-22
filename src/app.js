@@ -17,7 +17,8 @@ import { Route, Link } from 'react-router-dom'
 
 import LoginForm from "./views/login.component";
 import Home from "./views/home.component";
-import Navbar from "./views/navbar.component2";
+import Navbar from "./views/loginNavbar.component";
+import userpage from "./views/userpage.component";
 
 class App extends Component {
   constructor() {
@@ -75,6 +76,8 @@ class App extends Component {
         <Route
           exact path="/"
           component={Home} />
+        <Route path="/user" 
+            exact component={userpage} />
         <Route
           path="/login"
           render={() =>

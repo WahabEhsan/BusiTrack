@@ -6,20 +6,20 @@ module.exports = function(app, passport){
 	//if passport returns true then they are logged in and the user data
 	//for that person is sent
 	//need to work on this some more to ensure that the mongoose schema is correct
-	// app.post('/login', function (req, res, next) {
+	 app.post('/login', function (req, res, next) {
 			
-			// console.log(req)
-			// next()
-		// },
-		// passport.authenticate('local-login'),
-		// (req, res) => {
-			// console.log('logged in', req.user);
-			// var userInfo = {
-				// user: req.user
-			// };
-			// res.send(userInfo);
-		// }
-	// );
+			 console.log(req)
+			 next()
+		 },
+		 passport.authenticate('local-login'),
+		 (req, res) => {
+			 console.log('logged in', req.user);
+			 var userInfo = {
+				 user: req.user
+			 };
+			 res.send(userInfo);
+		 }
+	 );
 	//when data is modified (any data) then it will call update data to get the new user data and overwrite the old
 	//found this to be easier then expected. so might be some pifalls will need to go over it with everyone
 	app.post('/updatedata', function(req,res){
@@ -69,12 +69,12 @@ module.exports = function(app, passport){
 	// }));
 
 	
-	// app.post('/login', passport.authenticate('local-login', {
+	//app.post('/login', passport.authenticate('local-login', {
 		
-		// successRedirect: '/profile',
-		// failureRedirect: '/fail',
-		// failureFlash: true
-	// }));
+	//	successRedirect: '/profile',
+	//	failureRedirect: '/fail',
+	//	failureFlash: true
+	//}));
 	
 	// app.get('/signup', function(req, res){
 		// res.render('signup.ejs', { message: req.flash('signupMessage') });

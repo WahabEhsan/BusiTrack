@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import axios from 'axios';
 import quearystring from 'querystring';
 class login extends Component {
      constructor() {
     super();
 	this.state = {
+        loggedIn: false,
+        _id: '',
+        business: '',
+        object: '',
       username: '',
 	  password: '',
 	  redirectTo: null
@@ -39,15 +43,23 @@ class login extends Component {
                 console.log('login response: ')
                 console.log(response)
                 if (response.status === 200) {
+                   this.setState({
+                        _id: response.data.user._id,
+                        business: response.data.user.local.business,
+                        object: response.data.user.local.object,
+                        loggedIn: true
+				   })
+             
                     // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        username: response.data.username
-                    })
+                    {/*this.props.updateUser({*/}
+                        //loggedIn: true;
+                        //user: response.data.local;
+                        
+                    // })
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    console.log(this.state)
+
+                    //return <Redirect action="/user" />
                 }
             }).catch(error => {
                 console.log('login error: ')
@@ -57,7 +69,6 @@ class login extends Component {
     
 		/*event.preventDefault()
         console.log('handleSubmit')
-
         axios.post('http://localhost:8080/login', {
 			username: this.state.username,
 			password: this.state.passord
@@ -73,6 +84,8 @@ class login extends Component {
 	render() {
 			return <div class = "form-group"> 
 
+
+
                       <p style={{fontSize: 20}} > Login </p>
 					 
                      <form onSubmit={this.onSubmit}>
@@ -80,10 +93,11 @@ class login extends Component {
                          
                           </div>
 
-                          	<Link to="/" className="nav-link">
-				                Temp assess to home
-			                </Link>
+                          	<form action="/user">
+                                <button type="submit"> Temp Access to home </button>
+                            </form>
 
+                            <form action="/user">
                           <div class="container">
                             <label for="uname"><b>Username</b></label>
                             <input className="form-input"
@@ -105,11 +119,12 @@ class login extends Component {
                                 />
 
                             <button type="submit" onClick={this.handleSubmit}>Login</button>
+                       
                             <label>
                               <input type="checkbox" name="remember" /> Remember me
                             </label>
                           </div>
-                          
+                               </form>
                           	<Link to="/register" className="nav-link">Register</Link>
 
                           <div class="container" style={{backgroundColor: '#f1f1f1'}}>
