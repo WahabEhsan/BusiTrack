@@ -58,7 +58,7 @@ class login extends Component {
                     // })
                     // update the state to redirect to home
                     console.log(this.state)
-
+                    window.location.replace("/user");  
                     //return <Redirect action="/user" />
                 }
             }).catch(error => {
@@ -88,49 +88,44 @@ class login extends Component {
 
                       <p style={{fontSize: 20}} > Login </p>
 					 
-                     <form onSubmit={this.onSubmit}>
+                    
                           <div class="imgcontainer">
                          
                           </div>
+                          <form onSubmit={this.handleSubmit} noValidate>
+                            <div class="container">
+                              <label for="uname"><b>Username</b></label>
+                              <input className="form-input"
+                                      type="text"
+                                      id="username"
+                                      name="username"
+                                      placeholder="Username"
+                                      value={this.state.username}
+                                      onChange={this.handleChange}
+                                  />
 
-                          	<form action="/user">
-                                <button type="submit"> Temp Access to home </button>
-                            </form>
+                              <label for="psw"><b>Password</b></label>
+                              <input className="form-input"
+                                      placeholder="password"
+                                      type="password"
+                                      name="password"
+                                      value={this.state.password}
+                                      onChange={this.handleChange}
+                                  />
 
-                            <form action="/user">
-                          <div class="container">
-                            <label for="uname"><b>Username</b></label>
-                            <input className="form-input"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="Username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
-
-                            <label for="psw"><b>Password</b></label>
-                            <input className="form-input"
-                                    placeholder="password"
-                                    type="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-
-                            <button type="submit" onClick={this.handleSubmit}>Login</button>
-                       
-                            <label>
-                              <input type="checkbox" name="remember" /> Remember me
-                            </label>
-                          </div>
-                               </form>
+                              <button type="submit">Login</button>
+                        
+                              <label>
+                                <input type="checkbox" name="remember" /> Remember me
+                              </label>
+                            </div>
                           	<Link to="/register" className="nav-link">Register</Link>
+
+                            </form> 
 
                           <div class="container" style={{backgroundColor: '#f1f1f1'}}>
                             <button type="button" class="cancelbtn">Cancel</button>
-                           </div>
-                        </form>          
+                          </div>         
 			</div>
 	}
 }

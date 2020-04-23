@@ -1,7 +1,10 @@
 var User = require('./models/user.js');
+var cors = require('cors');
+var express = require('express');
+var app = express();
 module.exports = function(app, passport){
 	
-	
+	app.use(cors());
 	//login sequence will take the data sent to it and run it thrrough passport
 	//if passport returns true then they are logged in and the user data
 	//for that person is sent
