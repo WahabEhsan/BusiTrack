@@ -5,32 +5,32 @@ var app = express();
 module.exports = function(app, passport){
 	
 	app.use(cors());
-	//login sequence will take the data sent to it and run it thrrough passport
-	//if passport returns true then they are logged in and the user data
-	//for that person is sent
-	//need to work on this some more to ensure that the mongoose schema is correct
-	 // app.post('/login', function (req, res, next) {
+	/*login sequence will take the data sent to it and run it thrrough passport
+	if passport returns true then they are logged in and the user data
+	for that person is sent
+	need to work on this some more to ensure that the mongoose schema is correct*/
+	 app.post('/login', function (req, res, next) {
 			
-			 // console.log(req)
-			 // next()
-		 // },
-		 // passport.authenticate('local-login'),
-		 // (req, res) => {
-			 // console.log('logged in', req.user);
-			 // var userInfo = {
-				 // user: req.user
-			 // };
-			 // res.send(userInfo);
-		 // }
-	 // );
-	//when data is modified (any data) then it will call update data to get the new user data and overwrite the old
-	//found this to be easier then expected. so might be some pifalls will need to go over it with everyone
+			 console.log(req)
+			 next()
+		 },
+		 passport.authenticate('local-login'),
+		 (req, res) => {
+			 console.log('logged in', req.user);
+			 var userInfo = {
+				 user: req.user
+			 };
+			 res.send(userInfo);
+		 }
+	 );
+	/*when data is modified (any data) then it will call update data to get the new user data and overwrite the old
+	found this to be easier then expected. so might be some pifalls will need to go over it with everyone*/
 	// app.post('/updatedata', function(req,res){
 	// var user = req.user;
-	// this is for testing but body is not required if the object is modified in react.
+	// /* this is for testing but body is not required if the object is modified in react.*/
 	// user.local.business = req.body.business;
 	// user.local.object = req.body.business;
-	// end testing zone
+	// /*end testing zone*/
 	// console.log(req);
 	// user.save(function(err){
 			// if(err)
@@ -38,8 +38,8 @@ module.exports = function(app, passport){
 			// res.redirect('/profile');
 	// })
 	// });
-	//signup needs some work to ensure react redirects correctly but
-	//its system is functioning for name and password matching
+	/*signup needs some work to ensure react redirects correctly but
+	its system is functioning for name and password matching*/
 	app.post('/signup', function(req, res, next) {
   passport.authenticate('local-signup', function(err, user, info) {
     if (err) { return next(err); }
@@ -56,48 +56,48 @@ module.exports = function(app, passport){
   })(req, res, next);
 });
 
-app.get('/', function(req, res){
-		res.render('login.ejs', { message: req.flash('loginMessage') });
-	});
+// app.get('/', function(req, res){
+		// res.render('login.ejs', { message: req.flash('loginMessage') });
+	// });
 
-	app.get('/login', function(req, res){
-		console.log('success');
-		res.render('login.ejs', { message: req.flash('loginMessage') });
-	});
+	// app.get('/login', function(req, res){
+		// console.log('success');
+		// res.render('login.ejs', { message: req.flash('loginMessage') });
+	// });
 	
-app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect: '/',
-		failureRedirect: '/signup',
-		failureFlash: true
-	}));
+// app.post('/signup', passport.authenticate('local-signup', {
+		// successRedirect: '/',
+		// failureRedirect: '/signup',
+		// failureFlash: true
+	// }));
 
 	
-	app.post('/login', passport.authenticate('local-login', {
+	// app.post('/login', passport.authenticate('local-login', {
 		
-		successRedirect: '/profile',
-		failureRedirect: '/fail',
-		failureFlash: true
-	}));
+		// successRedirect: '/profile',
+		// failureRedirect: '/fail',
+		// failureFlash: true
+	// }));
 	
-	app.get('/signup', function(req, res){
-		res.render('signup.ejs', { message: req.flash('signupMessage') });
-	});
+	// app.get('/signup', function(req, res){
+		// res.render('signup.ejs', { message: req.flash('signupMessage') });
+	// });
 
 
 	
 
-	app.get('/profile', isLoggedIn, function(req, res){
-		res.render('profile.ejs', { user: req.user });
-	});
+	// app.get('/profile', isLoggedIn, function(req, res){
+		// res.render('profile.ejs', { user: req.user });
+	// });
 
-	app.get('/logout', function(req, res){
-		req.logout();
-		res.redirect('/');
-	})
+	// app.get('/logout', function(req, res){
+		// req.logout();
+		// res.redirect('/');
+	// })
 	
 	
 	
- };
+ // };
 
 function isLoggedIn(req, res, next) {
 	if(req.isAuthenticated()){
