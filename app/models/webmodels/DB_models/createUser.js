@@ -1,8 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 const con = require('./connect.js');
+var bcrypt = require('bcrypt');
 
-
-module.exports.main = function main(user, hash, email){ 
+module.exports.main = function main(user, hash){ 
 
     MongoClient.connect(con.uri, function(err, db) {
 		if (err) throw err;
@@ -12,8 +12,8 @@ module.exports.main = function main(user, hash, email){
 		
 		var myobj = {
 			username: user,
-            id: hash,
-            email: email,
+            password: hash,
+            email: '',
             phone: "",
 			lastMsg: "",
             businesses: []
