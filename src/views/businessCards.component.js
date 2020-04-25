@@ -8,112 +8,98 @@ import axios from 'axios';
 import business from "./business.component";
 import login from "./login.component";
 
-class Card extends Component {
+export default class Card extends Component {
+	 constructor(props) {
+        super(props);
+
+		this.handleBusinessClick = this.handleBusinessClick.bind(this);
+			this.handleNotBusinessClick = this.handleNotBusinessClick.bind(this);
+
+		this.state = {
+			viewBusiness: true
+		}
+    }    
+
+	 handleClick(e) {
+		e.preventDefault();
+		 console.log('The link was clicked.');
+	return <business />
+   
+  }
+      handleNotBusinessClick() {
+    this.setState({viewBusiness: false});
+  }
+
+    handleBusinessClick() {
+    this.setState({viewBusiness: true});
+  }
+
   
 	render() {
-        let title = this.props.title.name
-        let path = this.props.title.path
-        let id = this.props.title.id
+		
+		//function businessLink() {
+			//if (!this.state.viewBusiness) {
+				//this.state.viewBusiness: true;
+				
+			//}
+		//}
+		const viewBusiness = this.state.viewBusiness;
+
+		let button;
+
+		if (viewBusiness) {
+			 button = <business onClick={this.handleNotBusinessClick} />;
+		} else {
+				 button = <business onClick={this.handleBusinessClick}/>;
+		}
+
+	
+		 
+       // let businessName = this.props.businessName
+		
+        //let path = this.props.title.businessName
+        //let id = this.props.title.id
 
 		return (
-				<Router> 
+				
 			
 			<div className = "section">
-			<Link to={path} className="nav-link">
+			<Router> 
+			<Link to="/user/business" onClick="">
+
+			 
+			
 				<div className="businessCard_Container">
 					<div className="businessCard">
-						<div className="businessCardBanner"> </div>
-						<div className="businessCardInfo">{title}</div>
+						<div className="businessCardBanner">{this.props.businessName} </div>
+						<div className="businessCardInfo">
+							{/*<button onClick={businessLink}> </button>*/}
+						<div className="add">  
+					Temp Button to Open business Menu{button }      
+			</div>
+
+						</div>
 					</div>
+				</div>
+
+				<div className='form-container'>
+					 {(this.state.viewBusiness) ?
+					<business />: ''}
 				</div>
 			</Link>
 			
-		  <Route path={path} exact component={business} />
+
+		  <Route path={"/user/business"} exact component={business} />
+
+		  		    {/*<Route path={"/user/business"} render={(props) => <business {...props} name={this.props.businessName} /> */}
 	
 
 
 			
-
+				</Router> 
 			</div>
-			</Router> 
+			
 		);
 	}
 }
 
-export default class businessCard extends Component {
- constructor(props) {
-    super(props);
-   
-	this.onChangeOwned = this.onChangeOwned.bind(this);
-      const owned2 = [1, 2, 3, 4, 5];
-	this.businessElement = React.createRef();
-
-    this.state = {
-      owned: 3
-
-    };
-  }
-
-   handleClick = () => {
-
-    this.businessElement.current.changeName();
-  };
-
- 
-
-  onChangeOwned(e) {
-  	  this.setState({
-		owned: e.target.value
-	  });
-  }
-
-  onLoad(e) {
-    e.preventDefault();
-
-    const user = {
-      username: this.state.username
-    }
-
-    console.log(user);
-
-    axios.post('http://localhost:8080/login', user)
-      .then(res => console.log(res.data));
-
-    this.setState({
-      username: ''
-    })
-  }
-
-
-
-
-render() {
-    let links = [{id: 1,name: "Business 1",path: "/user/business1/"}, 
-                {id: 2,name: "Business 2",path: "/user/business2/"},
-                {id: 3,name: "Business 3",path: "/user/business3/"}];
-                {/* keyword needed*/}
-    return (
-      <div>
-				{/*  <button onClick={this.handleClick}>Show real name</button>
-	             <form onSubmit={this.onSubmit}>
-                          <div class="container">
-                            <label for="bAmount"><b>Username</b></label>
-                            <input  type="text" required className="form-control" value={this.state.owned}onChange={this.onChangeOwned} />
-                          </div>            
-                        </form>   
-
-        <p>
-          + Loading {this.state.owned} business
-          {Array(this.state.owned).fill(<div ><Card/></div>)}
-        </p> */}
-
-        {links.map( (item)=> (
-            <Card key={item.id}  title = {item} />
-        ) ) }
-         
-         {/* <businessList owned={5} /> */}
-
-      </div>
-    );
-  }
-}

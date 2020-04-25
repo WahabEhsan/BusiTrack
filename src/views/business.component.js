@@ -13,22 +13,23 @@ class business extends React.Component {
 		return <div class = "panel"> 
 		<Router>
 				<div id="main">
-					<Link to="/user/main" className="nav-link">Main</Link>
+					<Link to="/user/business/main" className="nav-link">Main</Link>
 				</div>
 			
 				<div id="stuffnthings">
-					<Link to="/user/funds" className="nav-link">Manage Funds</Link>
+					<Link to="/user/business/funds" className="nav-link">Manage Funds</Link>
 				</div>
 
 				<div id="stuffnthings">
-					<Link to="/user/options" className="nav-link">Manage Options</Link>
+					<Link to="/user/business/options" className="nav-link">Manage Options</Link>
 			</div>
 		
 		<hr />
+			<p> {this.props.name} </p>
 		 <Switch>
-			<Route path="/user/main" component={businessMain} />
-			<Route path="/user/funds" component={businessFunds} />
-			<Route path="/user/options" component={businessEmployees} />
+			<Route path="/user/business/main" component={businessMain} />
+			<Route path="/user/business/funds" component={businessFunds} />
+			<Route path="/user/business/options" component={businessEmployees} />
 		</Switch>
 		</Router>
 		</div >

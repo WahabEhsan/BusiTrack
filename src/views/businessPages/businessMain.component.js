@@ -54,7 +54,35 @@ class business extends React.Component {
        inventory: '',
        expenses: ''
     })
-  }
+  }  
+    
+    fetchBusiness(){
+        axios.get('http://localhost:8080/fetchBusiness', {        
+        }).then(response => {
+            console.log("User businesses: ")
+            //console.log(response)
+            //console.log(response.data)
+           // let handler = response
+           var x = [];
+            for (var count = 0; count < response.data.length; count++) {
+		        x[count] = response.data[count].businessName;
+            }
+
+            this.setState({
+               businesses: x
+
+            })
+
+            console.log(this.state.businesses)
+        }).catch(error => {
+            console.log(error)
+        })
+    }     
+    
+    componentDidMount(){
+        this.fetchBusiness();
+    }    
+
 	render() {
 		return <div class = "main"> 
 					Welcome to the Business Main Page
