@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import { Link, Switch } from 'react-router-dom';
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
@@ -12,6 +12,7 @@ class business extends React.Component {
 	render() {
 		return <div class = "panel"> 
 		<Router>
+				{this.props.businessName}
 				<div id="main">
 					<Link to="/user/business/main" className="nav-link">Main</Link>
 				</div>

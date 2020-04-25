@@ -1,15 +1,3 @@
-// import React from 'react';
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import { BrowserRouter as Router, Route} from "react-router-dom";
-
-
-// import Navbar2 from "./views/navbar.component2";
-// import home from "./views/home.component";
-// import login from "./views/login.component";
-
-
-// import register from "./views/register.component";
-
 import React, { Component } from 'react';
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
