@@ -125,7 +125,10 @@ class login extends Component {
 
                           <div class="container" style={{backgroundColor: '#f1f1f1'}}>
                             <button type="button" class="cancelbtn">Cancel</button>
-                          </div>         
+                          </div>  
+                          
+
+
 			</div>
 	}
 }

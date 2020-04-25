@@ -2,6 +2,8 @@ var User = require('./models/user.js');
 var cors = require('cors');
 var express = require('express');
 var app = express();
+var MongoGetBusiness = require("./models/webmodels/DB_models/getBusinesses.js");
+var Connect = require("./models/webmodels/DB_models/connect.js");
 module.exports = function(app, passport){
 	
 	app.use(cors());
@@ -9,6 +11,7 @@ module.exports = function(app, passport){
 	if passport returns true then they are logged in and the user data
 	for that person is sent
 	need to work on this some more to ensure that the mongoose schema is correct*/
+    var business;
 	 app.post('/login', function (req, res, next) {
 			
 			 console.log(req)
@@ -19,8 +22,12 @@ module.exports = function(app, passport){
 			 console.log('logged in', req.user);
 			 var userInfo = {
 				 user: req.user
-			 };
-			 res.send(userInfo);
+             };
+             MongoGetBusiness.main(req.username);
+             business = req.user.local.business;
+
+             res.send(userInfo);
+             console.log('USER Business: ' + req.session.userBusiness)
 		 }
 	 );
 	/*when data is modified (any data) then it will call update data to get the new user data and overwrite the old
@@ -54,7 +61,13 @@ module.exports = function(app, passport){
       return res.redirect('/');
     });
   })(req, res, next);
-});
+    });
+
+    app.get('/fetchBusiness', function (req, res) {
+        console.log(Connect.temp.businesses);
+        res.send(Connect.temp.businesses);
+        
+    })
 
 // app.get('/', function(req, res){
 		// res.render('login.ejs', { message: req.flash('loginMessage') });
@@ -97,7 +110,7 @@ module.exports = function(app, passport){
 	
 	
 	
- // };
+  };
 
 function isLoggedIn(req, res, next) {
 	if(req.isAuthenticated()){
