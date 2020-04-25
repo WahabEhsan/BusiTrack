@@ -25,6 +25,7 @@ class employee extends React.Component {
 				    <form>
 
                           <div class="container">
+                          {this.props.bName}
 								
                                  <label for="manager"><b>Business Manager</b></label>
                                 <input id="mngr" disabled type="text" className="form-control" value={this.state.manager}onChange={this.onChangeUsername} />

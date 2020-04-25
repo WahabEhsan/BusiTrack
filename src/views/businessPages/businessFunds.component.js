@@ -25,6 +25,7 @@ class business extends React.Component {
 				     <form>
 
                           <div class="container">
+                          {this.props.bName}
                                 <label for="expenses"><b>Business Expenses</b></label>
                                 <input id="exp" disabled type="text" className="form-control" value={this.state.expenses}onChange={this.onChangeUsername} />
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+//var Connect = require("../../../app/models/webmodels/DB_models/connect.js");
 
 class business extends React.Component {
      constructor(props) {
@@ -63,13 +64,26 @@ class business extends React.Component {
             //console.log(response)
             //console.log(response.data)
            // let handler = response
-           var x = [];
-            for (var count = 0; count < response.data.length; count++) {
-		        x[count] = response.data[count].businessName;
-            }
+       var businessData = [];
+       var bName = this.state.bName;
+	//for (var count = 0; count < Connect.temp.businesses.length; count++) {
+		//if (bName == Connect.temp.businesses[count].businessName) {
+				//businessData[count] = Connect.temp.businesses[count].businessName;
+				//businessData[count] = Connect.temp.businesses[count].phoneAbrv;
+				//businessData[count] = Connect.temp.businesses[count].employee;
+				//businessData[count] = Connect.temp.businesses[count].manager;
+				//businessData[count] = Connect.temp.businesses[count].inventory;
+				//businessData[count] = Connect.temp.businesses[count].expenses;
+		//}
+	//}
 
             this.setState({
-               businesses: x
+               //businesseName: businessData[0],
+               //phoneAbrv: businessData[1],
+               //employee: businessData[2],
+                //manager: businessData[3],
+               //inventory: businessData[4],
+               //expenses: businessData[5]
 
             })
 
@@ -80,12 +94,16 @@ class business extends React.Component {
     }     
     
     componentDidMount(){
-        this.fetchBusiness();
+        //this.fetchBusiness();
     }    
 
 	render() {
+
+        this.businessName = this.state.bName
+
 		return <div class = "main"> 
 					Welcome to the Business Main Page
+                    {this.props.bName}
 				
 				
 				     <form  onSubmit={this.onSubmit}>
