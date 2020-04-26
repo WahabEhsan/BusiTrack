@@ -20,7 +20,7 @@ import settings from "./settings.component.js";export default class home extends
         }).then(response => {
             console.log("User businesses: ")
             //console.log(response)
-            //console.log(response.data)
+            console.log(response.data)
            // let handler = response
            var x = [];
             for (var count = 0; count < response.data.length; count++) {

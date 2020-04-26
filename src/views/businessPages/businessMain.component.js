@@ -44,6 +44,7 @@ class business extends React.Component {
 
     console.log(user);
 
+    /*
     axios.post('http://localhost:8080/login', user)
       .then(res => console.log(res.data));
 
@@ -54,47 +55,20 @@ class business extends React.Component {
        manager: '',
        inventory: '',
        expenses: ''
-    })
+    }) */
   }  
     
     fetchBusiness(){
-        axios.get('http://localhost:8080/fetchBusiness', {        
-        }).then(response => {
-            console.log("User businesses: ")
-            //console.log(response)
-            //console.log(response.data)
-           // let handler = response
-       var businessData = [];
-       var bName = this.state.bName;
-	//for (var count = 0; count < Connect.temp.businesses.length; count++) {
-		//if (bName == Connect.temp.businesses[count].businessName) {
-				//businessData[count] = Connect.temp.businesses[count].businessName;
-				//businessData[count] = Connect.temp.businesses[count].phoneAbrv;
-				//businessData[count] = Connect.temp.businesses[count].employee;
-				//businessData[count] = Connect.temp.businesses[count].manager;
-				//businessData[count] = Connect.temp.businesses[count].inventory;
-				//businessData[count] = Connect.temp.businesses[count].expenses;
-		//}
-	//}
-
-            this.setState({
-               //businesseName: businessData[0],
-               //phoneAbrv: businessData[1],
-               //employee: businessData[2],
-                //manager: businessData[3],
-               //inventory: businessData[4],
-               //expenses: businessData[5]
-
-            })
-
-            console.log(this.state.businesses)
-        }).catch(error => {
-            console.log(error)
-        })
+      axios.get('http://localhost:8080/user/' + this.props.bName, {        
+      }).then(response => {
+          console.log('Business Main Response: ' + response.data.employee)
+      }).catch(error => {
+          console.log(error)
+      })
     }     
     
     componentDidMount(){
-        //this.fetchBusiness();
+        this.fetchBusiness();
     }    
 
 	render() {
