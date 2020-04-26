@@ -3,6 +3,8 @@ import './login.css';
 import { Link,Redirect } from 'react-router-dom';
 import axios from 'axios';
 import quearystring from 'querystring';
+
+
 class login extends Component {
      constructor() {
     super();
@@ -83,10 +85,6 @@ class login extends Component {
 
 	render() {
 			return <div class = "form-group"> 
-
-
-
-                      <p style={{fontSize: 20}} > Login </p>
 					 
                     
                           <div class="imgcontainer">

@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <div className="App">
    
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+        { /* <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} /> */}
         {/* greet user if logged in: */}
         {this.state.loggedIn &&
           <p>login success!, {this.state.username}!</p>
