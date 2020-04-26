@@ -62,6 +62,35 @@ class business extends React.Component {
       axios.get('http://localhost:8080/user/' + this.props.bName, {        
       }).then(response => {
           console.log('Business Main Response: ' + response.data.employee)
+          console.log(response)
+          var businessData = [];
+         // for (var count = 0; count < response.data.length; count++) {
+
+				//console.log('Business sent: ' + response.data[count]);
+	
+					businessData[0] = response.data.businessName;
+					businessData[1] = response.data.phoneAbrv;
+					businessData[2] = response.data.employee;
+					businessData[3] = response.data.manager;
+					businessData[4] = response.data.inventory;
+					businessData[5] = response.data.expenses;
+			
+		//}
+
+            console.log(businessData)    
+
+            this.setState({
+               businessName: businessData[0],
+               phoneAbrv: businessData[1],
+               employee: businessData[2],
+               manager: businessData[3],
+               inventory: businessData[4],
+               expenses: businessData[5]
+
+            })
+
+            console.log('BusinessName: ' + this.state.businessName)
+
       }).catch(error => {
           console.log(error)
       })
