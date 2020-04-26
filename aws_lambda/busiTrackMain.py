@@ -18,6 +18,7 @@ def lambda_handler(event, context):
         msg_sending = "Hello! Welcome To BusiTrack. In order to use this service you have to signup at our website: " \
                "\nhttp://ec2-52-15-53-59.us-east-2.compute.amazonaws.com:3000/"
     else:
+
         response = msg_handling.handler(msg_received, num_from)
 
         if not response:
@@ -27,6 +28,5 @@ def lambda_handler(event, context):
         print("Received event: " + str(event))
 
     user_object.update_last_msg(num_from, msg_received)
-
-    return '<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>' + msg_sending + '</Message></Response>'
-
+    
+    return '<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>' + str(msg_sending) + '</Message></Response>'
