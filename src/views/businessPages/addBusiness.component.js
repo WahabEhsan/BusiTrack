@@ -29,7 +29,7 @@ class business extends React.Component {
             }).then(response => {
             }).catch(err => console.log(err))
 
-            setTimeout(window.location.replace("/user"), 5000);
+            setTimeout(window.location.replace("/user"), 100);
             //window.location.replace("/user")
 }
 

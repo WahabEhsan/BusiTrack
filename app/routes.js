@@ -67,7 +67,7 @@ module.exports = function(app, passport){
     });
 
     app.get('/fetchBusiness', function (req, res) {
-        //console.log('Fetch business route: ' + Connect.temp.businesses);
+        //console.log('Fetch business called');
         res.send(Connect.temp.businesses);
         
 	})
@@ -97,16 +97,10 @@ module.exports = function(app, passport){
 		console.log("    Phone Abrv: " + req.body.phoneAbrv);
 		console.log("    Username: " + Connect.temp.username);
 		Create.main(Connect.temp.username, [req.body.businessName, req.body.phoneAbrv]);
-		console.log(Connect.temp)
 		function test(){
 			getUser.main(username);
 		}
-		function timeout(){
-			console.log("Connect Temp: " + Connect.temp.businesses)	
-
-		}
 		setTimeout(test, 2000)
-		setTimeout(timeout, 3000)
 	})
 	
   };

@@ -14,47 +14,51 @@ import settings from "./settings.component.js";export default class home extends
         this.state = {
             username: this.props.username,
             businesses: [],
-            reload: false
+            reload: false,
+            flag: false
         }
+
+        this.fetchBusiness = this.fetchBusiness.bind(this);
     }    
     
     fetchBusiness(){
         axios.get('http://localhost:8080/fetchBusiness', {        
         }).then(response => {
-            console.log("User businesses: ")
+            //console.log("User businesses: ")
             //console.log(response)
-            console.log(response.data)
+            //console.log(response.data)
            // let handler = response
            var x = [];
             for (var count = 0; count < response.data.length; count++) {
 		        x[count] = response.data[count].businessName;
             }
-
             this.setState({
                businesses: x
             })
-            console.log(this.state.businesses)
+            //console.log(this.state.businesses)
         }).catch(error => {
             console.log(error)
         })
     }     
     
-    componentDidMount(){
+    /*componentDidMount(){
         this.fetchBusiness();
+        setInterval(this.fetchBusiness(), 100000000)
     }  
     
 
     componentDidUpdate(prevProps, prevState){
-        if(this.state.businesses !== prevState.businesses){
-            this.fetchBusiness();
-        }
-    }
+        //if(this.state.businesses !== prevState.businesses){
+                this.fetchBusiness();
+        //}
+    }*/
 
     render () {
+        setTimeout(this.fetchBusiness(), 100);
 
-            const listBusinesses = this.state.businesses.map(business => {
-                return <Cards businessName = {business}/>
-            })
+        const listBusinesses = this.state.businesses.map(business => {
+            return <Cards businessName = {business}/>
+        })
         
         return (            
             
@@ -64,9 +68,7 @@ import settings from "./settings.component.js";export default class home extends
         
                 <Navbar />
                 <div className ="businessButtons">
-                <AddBusiness />
-                {this.state.businesses}
-
+                    <AddBusiness />
                 </div>
 
                 <switch>

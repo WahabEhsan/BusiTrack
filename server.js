@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cors());
-app.use(morgan('dev'));
+//app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(session({secret: 'anystringoftext',
 				 saveUninitialized: true,
@@ -31,7 +31,7 @@ app.use(session({secret: 'anystringoftext',
 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+//app.use(flash()); // use connect-flash for flash messages stored in session
 app.set('view engine', 'ejs');
 
 require('./app/routes.js')(app, passport);

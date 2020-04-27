@@ -18,13 +18,16 @@ module.exports.main = function main(user, input){
 	
 		var dateTime = {$currentDate: { lastModified: true }};
         
+        var dupFlag = false;
+        
         dbo.collection(con.coll).findOne(query, function(err, res) {
 			if (err) throw err;
             
             for (var i = con.zero; i < res.businesses.length; i++) {
-				if (res.businesses[i].phoneAbrv == input[con.one]) {
+				if (res.businesses[i].phoneAbrv == input[con.one] || res.businesses[i].businessName == input[con.zero]) {
 					db.close();
-				}        
+                    dupFlag = true;
+                }    
 			}
         });
         
@@ -34,10 +37,23 @@ module.exports.main = function main(user, input){
                 console.log("Business Created");
                 db.close();
             });
+
         }
-		setTimeout(create, 2000);
+        
+        function cont() {
+            if (dupFlag == false) {
+                setTimeout(create, 200);
+            }
+        }
+        
+        setTimeout(cont, 200);
+
             
 	});
 
+    
+    
 };
+
+
 
