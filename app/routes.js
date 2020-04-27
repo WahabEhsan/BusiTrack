@@ -4,8 +4,9 @@ var express = require('express');
 var app = express();
 var MongoGetBusiness = require("./models/webmodels/DB_models/getBusinesses.js");
 var Connect = require("./models/webmodels/DB_models/connect.js");
-var Create = require("./models/webmodels/DB_models/createBusiness.js")
-var getUser = require("./models/webmodels/DB_models/getUser.js")
+var Create = require("./models/webmodels/DB_models/createBusiness.js");
+var Delete = require("./models/webmodels/DB_models/deleteBusiness.js");
+var getUser = require("./models/webmodels/DB_models/getUser.js");
 var bodyParser = require('body-parser');
 
 module.exports = function(app, passport){
@@ -67,7 +68,7 @@ module.exports = function(app, passport){
     });
 
     app.get('/fetchBusiness', function (req, res) {
-        //console.log('Fetch business called');
+        //console.log('Fetch business route: ' + Connect.temp.businesses);
         res.send(Connect.temp.businesses);
         
 	})
@@ -97,13 +98,40 @@ module.exports = function(app, passport){
 		console.log("    Phone Abrv: " + req.body.phoneAbrv);
 		console.log("    Username: " + Connect.temp.username);
 		Create.main(Connect.temp.username, [req.body.businessName, req.body.phoneAbrv]);
+		console.log(Connect.temp)
 		function test(){
 			getUser.main(username);
 		}
-		setTimeout(test, 2000)
+		function timeout(){
+			console.log("Connect Temp: " + Connect.temp.businesses)	
+
+		}
+		setTimeout(test, 3000)
+		//setTimeout(timeout, 3000)
 	})
 	
-  };
+
+
+
+    app.post('/removeBusiness', function (req, res) {
+    var username = Connect.temp.username
+    console.log("Remove Business Route: ");
+    console.log("    Business Name: " + req.body.businessName);
+    console.log("    Username: " + Connect.temp.username);
+    Delete.main(Connect.temp.username, req.body.businessName);
+    console.log(Connect.temp)
+    function test() {
+        getUser.main(username);
+    }
+    function timeout() {
+        console.log("Connect Temp: " + Connect.temp.businesses)
+
+    }
+    setTimeout(test, 3000)
+    //setTimeout(timeout, 3000)
+    })
+
+	};
 
 function isLoggedIn(req, res, next) {
 	if(req.isAuthenticated()){

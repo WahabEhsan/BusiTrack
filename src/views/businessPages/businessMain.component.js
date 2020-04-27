@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import './businesses.css';
 //var Connect = require("../../../app/models/webmodels/DB_models/connect.js");
+import RemoveBusiness from "./removeBusiness.component";
 
 class business extends React.Component {
      constructor(props) {
@@ -225,6 +226,8 @@ class business extends React.Component {
            
 
                         </form>  
+
+                        <RemoveBusiness />
 				
 				</div >
 
