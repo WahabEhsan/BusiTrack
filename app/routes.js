@@ -4,6 +4,8 @@ var express = require('express');
 var app = express();
 var MongoGetBusiness = require("./models/webmodels/DB_models/getBusinesses.js");
 var Connect = require("./models/webmodels/DB_models/connect.js");
+var Create = require("./models/webmodels/DB_models/createBusiness.js")
+var getUser = require("./models/webmodels/DB_models/getUser.js")
 var bodyParser = require('body-parser');
 
 module.exports = function(app, passport){
@@ -65,7 +67,7 @@ module.exports = function(app, passport){
     });
 
     app.get('/fetchBusiness', function (req, res) {
-        console.log('Fetch business route: ' + Connect.temp.businesses);
+        //console.log('Fetch business route: ' + Connect.temp.businesses);
         res.send(Connect.temp.businesses);
         
 	})
@@ -89,9 +91,22 @@ module.exports = function(app, passport){
 	})
 
 	app.post('/addBusiness', function(req, res){
+		var username = Connect.temp.username
 		console.log("Add Business Route: ");
 		console.log("    Business Name: " + req.body.businessName);
 		console.log("    Phone Abrv: " + req.body.phoneAbrv);
+		console.log("    Username: " + Connect.temp.username);
+		Create.main(Connect.temp.username, [req.body.businessName, req.body.phoneAbrv]);
+		console.log(Connect.temp)
+		function test(){
+			getUser.main(username);
+		}
+		function timeout(){
+			console.log("Connect Temp: " + Connect.temp.businesses)	
+
+		}
+		setTimeout(test, 2000)
+		setTimeout(timeout, 3000)
 	})
 	
   };

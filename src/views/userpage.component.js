@@ -12,7 +12,9 @@ import settings from "./settings.component.js";export default class home extends
         super(props);
 
         this.state = {
-            businesses: []
+            username: this.props.username,
+            businesses: [],
+            reload: false
         }
     }    
     
@@ -30,9 +32,7 @@ import settings from "./settings.component.js";export default class home extends
 
             this.setState({
                businesses: x
-
             })
-
             console.log(this.state.businesses)
         }).catch(error => {
             console.log(error)
@@ -41,12 +41,21 @@ import settings from "./settings.component.js";export default class home extends
     
     componentDidMount(){
         this.fetchBusiness();
-    }    
+    }  
     
+
+    componentDidUpdate(prevProps, prevState){
+        if(this.state.businesses !== prevState.businesses){
+            this.fetchBusiness();
+        }
+    }
+
     render () {
-        const listBusinesses = this.state.businesses.map(business => {
-            return <Cards businessName = {business}/>
-        })
+
+            const listBusinesses = this.state.businesses.map(business => {
+                return <Cards businessName = {business}/>
+            })
+        
         return (            
             
             <div className = "section">
@@ -56,6 +65,7 @@ import settings from "./settings.component.js";export default class home extends
                 <Navbar />
                 <div className ="businessButtons">
                 <AddBusiness />
+                {this.state.businesses}
 
                 </div>
 

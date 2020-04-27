@@ -15,7 +15,7 @@ class login extends Component {
         object: '',
       username: '',
 	  password: '',
-	  redirectTo: null
+    redirectTo: null
     }
    
    this.handleSubmit = this.handleSubmit.bind(this)

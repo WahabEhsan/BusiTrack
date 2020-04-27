@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const con = require('./connect.js');
 
 
-module.exports.main = function main(hash){ 
+module.exports.main = function main(user){ 
 	
     MongoClient.connect(con.uri, function(err, db) {
 		if (err) throw err;
@@ -10,7 +10,7 @@ module.exports.main = function main(hash){
 		/**DB OPERATIONS HERE**/
 		var dbo = db.db(con.database);
 		
-		dbo.collection(con.coll).findOne({id: hash}, function(err, res) {
+		dbo.collection(con.coll).findOne({username: user}, function(err, res) {
 			if (err) throw err;
 			con.temp = res;
 			db.close();

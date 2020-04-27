@@ -11,7 +11,8 @@ class business extends React.Component {
 
         this.state = {
             bName: "",
-            pAbrv: ""
+            pAbrv: "",
+            username: this.props.username
 		}
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -25,7 +26,11 @@ class business extends React.Component {
             .post('http://localhost:8080/addBusiness', {
                     businessName: this.state.bName,
                     phoneAbrv: this.state.pAbrv
-            }).then().catch(err => console.log(err))
+            }).then(response => {
+            }).catch(err => console.log(err))
+
+            setTimeout(window.location.replace("/user"), 5000);
+            //window.location.replace("/user")
 }
 
 handleChange(event) { this.setState({ [event.target.name] : event.target.value }); }
