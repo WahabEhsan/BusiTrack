@@ -4,9 +4,13 @@ var express = require('express');
 var app = express();
 var MongoGetBusiness = require("./models/webmodels/DB_models/getBusinesses.js");
 var Connect = require("./models/webmodels/DB_models/connect.js");
+var bodyParser = require('body-parser');
+
 module.exports = function(app, passport){
 	
 	app.use(cors());
+	app.use(bodyParser.urlencoded({ extended: false }));
+	app.use(bodyParser.json());
 	/*login sequence will take the data sent to it and run it thrrough passport
 	if passport returns true then they are logged in and the user data
 	for that person is sent
@@ -82,6 +86,12 @@ module.exports = function(app, passport){
 					//businessData[count] = Connect.temp.businesses[count].expenses;
 			}
 		}
+	})
+
+	app.post('/addBusiness', function(req, res){
+		console.log("Add Business Route: ");
+		console.log("    Business Name: " + req.body.businessName);
+		console.log("    Phone Abrv: " + req.body.phoneAbrv);
 	})
 	
   };

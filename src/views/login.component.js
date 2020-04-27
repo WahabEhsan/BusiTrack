@@ -30,7 +30,7 @@ class login extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-    }
+  }
 
   handleSubmit(event) {
         event.preventDefault()
@@ -67,22 +67,9 @@ class login extends Component {
                 console.log('login error: ')
                 console.log(error);
                 
-            })
-    
-		/*event.preventDefault()
-        console.log('handleSubmit')
-        axios.post('http://localhost:8080/login', {
-			username: this.state.username,
-			password: this.state.passord
-		})
-      .then(res => console.log(res.data));
-             
-			/* axios.post('http://localhost:8080/login', user)
-      .then(res => console.log(res.data));*/
-                
+            })           
             }
     
-
 	render() {
 			return <div class = "form-group"> 
 					 
