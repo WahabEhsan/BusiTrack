@@ -102,12 +102,7 @@ module.exports = function(app, passport){
 		function test(){
 			getUser.main(username);
 		}
-		function timeout(){
-			console.log("Connect Temp: " + Connect.temp.businesses)	
-
-		}
 		setTimeout(test, 3000)
-		//setTimeout(timeout, 3000)
 	})
 	
 
@@ -123,12 +118,7 @@ module.exports = function(app, passport){
     function test() {
         getUser.main(username);
     }
-    function timeout() {
-        console.log("Connect Temp: " + Connect.temp.businesses)
-
-    }
     setTimeout(test, 3000)
-    //setTimeout(timeout, 3000)
     })
 
 	};

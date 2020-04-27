@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const con = require('./connect.js');
 
 
-module.exports.main = function main(hash, input){ 
+module.exports.main = function main(user, input){ 
 
     MongoClient.connect(con.uri, function(err, db) {
 		if (err) throw err;
@@ -10,7 +10,7 @@ module.exports.main = function main(hash, input){
 		/**DB OPERATIONS HERE**/
 		var dbo = db.db(con.database);
 		
-		var query = {id: hash};
+		var query = {username: user};
 		
 		var value = {$pull: {businesses: {businessName: input}}};
 		
@@ -26,4 +26,5 @@ module.exports.main = function main(hash, input){
 	});
 
 };
+
 
