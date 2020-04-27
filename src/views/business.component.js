@@ -17,7 +17,7 @@ class business extends React.Component {
 		this.handleEmployeesClick = this.handleEmployeesClick.bind(this);
 
       this.state = {
-        viewMain: 'false',
+        viewMain: 'true',
 		viewFunds: 'false',
 		viewEmployee: 'false'
       }
@@ -57,23 +57,23 @@ class business extends React.Component {
 
 		return <div class = "panel"> 
 		{/*<Router>*/}
-				{this.props.businessName}
+
 				<div id="main">
 					{/*<Link to="/user/business/main" className="nav-link">Main</Link>*/}
-					<button onClick={this.handleMainClick}>Main</button>
+					{/*<button onClick={this.handleMainClick}>Main</button>*/}
 				</div>
 			
 				<div id="stuffnthings">
 					{/*<Link to="/user/business/funds" className="nav-link">Manage Funds</Link>*/}
-					<button onClick={this.handleFundsClick}>Manage Funds</button>
+					{/*<button onClick={this.handleFundsClick}>Manage Funds</button>*/}
 				</div>
 
 				<div id="stuffnthings">
 					{/*<Link to="/user/business/options" className="nav-link">Manage Emploees</Link>*/}
-					<button onClick={this.handleEmployeesClick}>Manage Emploees</button>
+					{/*<button onClick={this.handleEmployeesClick}>Manage Emploees</button>*/}
 			</div>
 		
-		<hr />
+
 
 		 {viewMain == 'true' ? <BusinessMain bName = {this.props.businessName} /> : ''}
 		 {viewFunds == 'true' ? <BusinessFunds bName = {this.props.businessName} /> : ''}
@@ -85,6 +85,7 @@ class business extends React.Component {
 			<Route path="/user/business/options" component={businessEmployees} />
 		</Switch>
 		</Router>*/}
+			<hr />
 		</div >
 
 		

@@ -33,13 +33,14 @@ export default class Card extends Component {
 				
 			
 			<div className = "section">
-				<div className="businessCard_Container">
+				<div className="businessCard_Container" onClick={this.handleBusinessClick}>
 					<div className="businessCard">
 						<div className="businessCardBanner">{this.props.businessName} </div>
 						<div className="businessCardInfo">
-						<div className="add">  
-					    <button onClick={this.handleBusinessClick}>Business Page</button>
-		      	</div>
+		
+							Business Page
+					    {/*<button onClick={this.handleBusinessClick}>Business Page</button>*/}
+
 						</div>
 					</div>
 				</div>

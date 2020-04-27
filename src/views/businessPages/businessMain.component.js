@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './businesses.css';
 //var Connect = require("../../../app/models/webmodels/DB_models/connect.js");
 
 class business extends React.Component {
@@ -104,16 +105,20 @@ class business extends React.Component {
 
         this.businessName = this.state.bName
 
+        const employeeList = Object.values(this.state.employee);
+        const managerList = Object.values(this.state.manager);
+        const inventoryList = Object.values(this.state.inventory);
+        const expensesList = Object.values(this.state.expenses);
+
 		return <div class = "main"> 
-					Welcome to the Business Main Page
-                    {this.props.bName}
-				
+					
 				
 				     <form  onSubmit={this.onSubmit}>
 
                           <div class="container">
 
-                               <button type="submit">Retrieve Information</button>
+                               <button type="submit" >Retrieve Information</button>
+                               <h5 style={{ fontWeight: 'bold' }}>Welcome to the Business Main Page</h5>
 
                                 <label for="businessName"><b>Business Name</b></label>
                                 <input id="bName" name="businessName"  type="text" className="form-control" value={this.state.businessName} onChange={this.onChangeData} />
@@ -122,18 +127,102 @@ class business extends React.Component {
                                 <input id="phoneAbrv" name="phoneAbrv" type="text" className="form-control" value={this.state.phoneAbrv} onChange={this.onChangeData} />
 
                                 <label for="Employee"><b>Business Employees</b></label>
-                                <input id="emplye" name="employee" type="text" className="form-control" value={this.state.employee}onChange={this.onChangeData} />
+                                <table>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Contact Number</th>
+                                        <th>Address</th>
+                                        <th>Pay</th>
+                                        <th>Group</th>
+                                        <th>Last 4 SSN</th>
+                                    </tr>
+
+                                    
+                                {employeeList.map((item) => 
+                                <tr>
+                                    
+                                        <td>{item.fName}</td>
+                                        <td>{item.lName}</td>
+                                        <td>{item.contact}</td>
+                                        <td>{item.address}</td>
+                                        <td>{item.pay}</td>
+                                        <td>{item.group}</td>
+                                        <td>{item.ssn}</td>
+                                    
+                                 </tr>
+                                )}
+                                    
+                                </table>
 
                                 <label for="manager"><b>Business Manager</b></label>
-                                <input id="mngr" name="manager" type="text" className="form-control" value={this.state.manager}onChange={this.onChangeData} />
+
+                               <table>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Group</th>
+                                    </tr>
+
+                                    
+                                {managerList.map((item) => 
+                                <tr>
+                                    
+                                        <td>{item.fName}</td>
+                                        <td>{item.lName}</td>
+                                        <td>{item.group}</td>
+                                    
+                                 </tr>
+                                )}
+                                    
+                                </table>
 
                                 <label for="inventory"><b>Business inventory</b></label>
-                                <input id="inv" name="inventory" type="text" className="form-control" value={this.state.inventory}onChange={this.onChangeData} />
+
+                                <table>
+                                    <tr>
+                                        <th>Item Number</th>
+                                        <th>Item Name</th>
+                                        <th>Item Price</th>
+                                        <th>Stock</th>
+                                    </tr>
+
+                                    
+                                {inventoryList.map((item) => 
+                                <tr>
+                                    
+                                        <td>{item.itemNumber}</td>
+                                        <td>{item.itemName}</td>
+                                        <td>{item.itemPrice}</td>
+                                        <td>{item.stock}</td>
+                                    
+                                 </tr>
+                                )}
+                                    
+                                </table>
 
                                 <label for="expenses"><b>Business Expenses</b></label>
-                                <input id="exp" name="expenses"  type="text" className="form-control" value={this.state.expenses}onChange={this.onChangeData} />
+
+                                <table>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                    </tr>
+
+                                    
+                                {expensesList.map((item) => 
+                                <tr>
+                                    
+                                        <td>{item.date}</td>
+                                        <td>{item.amount}</td>
+  
+                                 </tr>
+                                )}
+                                </table>
+                                    
 
                           </div>
+           
 
                         </form>  
 				

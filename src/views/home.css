@@ -22,7 +22,11 @@
 	height: 40%;
 	width: 100%;
 	float: left;
-			
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+
+
 	border-style: outset;
 	border-color: gray;
 	border-width: 3px;
@@ -40,8 +44,8 @@
 	border-bottom-left-radius: 5px;
 }
 		
-.businessCardInfo:hover {
-	opacity: 0.1;
+.businessCard:hover {
+	opacity: 0.5;
 	background-color: #ffffff;
 }
 

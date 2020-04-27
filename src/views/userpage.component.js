@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import axios from 'axios';import Navbar from "./navbar.component.js";
 import Cards from "./businessCards.component";
 import business from "./business.component";
+import AddBusiness from "./businessPages/addBusiness.component";
 
 import settings from "./settings.component.js";export default class home extends Component {
     constructor(props) {
@@ -54,8 +55,8 @@ import settings from "./settings.component.js";export default class home extends
         
                 <Navbar />
                 <div className ="businessButtons">
-                <label type="button" className="add">Add Business</label>
-                <label type="button"className="remove">Remove Business</label>
+                <AddBusiness />
+
                 </div>
 
                 <switch>
