@@ -5,6 +5,8 @@ import './businesses.css';
 //var Connect = require("../../../app/models/webmodels/DB_models/connect.js");
 import RemoveBusiness from "./removeBusiness.component";
 
+import AddEmployee from "./addEmployee.component";
+
 class business extends React.Component {
      constructor(props) {
         super(props);
@@ -128,6 +130,10 @@ class business extends React.Component {
                                 <input id="phoneAbrv" name="phoneAbrv" type="text" className="form-control" value={this.state.phoneAbrv} onChange={this.onChangeData} />
 
                                 <label for="Employee"><b>Business Employees</b></label>
+                                
+                                <AddEmployee businessName = {this.state.businessName} />
+                                <br />
+
                                 <table>
                                     <tr>
                                         <th>First Name</th>
@@ -225,9 +231,9 @@ class business extends React.Component {
                           </div>
            
 
-                        </form>  
+            </form>  
 
-                        <RemoveBusiness />
+                <RemoveBusiness />
 				
 				</div >
 

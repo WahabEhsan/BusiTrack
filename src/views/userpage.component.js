@@ -15,7 +15,7 @@ import settings from "./settings.component.js";export default class home extends
             username: this.props.username,
             businesses: [],
             reload: false,
-            flag: false
+            flag: false,
         }
 
         this.fetchBusiness = this.fetchBusiness.bind(this);
@@ -32,6 +32,7 @@ import settings from "./settings.component.js";export default class home extends
             for (var count = 0; count < response.data.length; count++) {
 		        x[count] = response.data[count].businessName;
             }
+
             this.setState({
                businesses: x
             })

@@ -12,7 +12,8 @@ export default class Card extends Component {
 
       this.handleBusinessClick = this.handleBusinessClick.bind(this);
       this.state = {
-        viewBusiness: 'false'
+        viewBusiness: 'false',
+		businessName: this.props.businessName
       }
     }    
 

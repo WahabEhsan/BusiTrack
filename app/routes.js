@@ -9,6 +9,15 @@ var Delete = require("./models/webmodels/DB_models/deleteBusiness.js");
 var getUser = require("./models/webmodels/DB_models/getUser.js");
 var bodyParser = require('body-parser');
 
+var createEmployee = require("./models/webmodels/DB_models/addEmp.js");
+var createManager = require("./models/webmodels/DB_models/addEmp.js");
+var createInventory = require("./models/webmodels/DB_models/addEmp.js");
+
+var removeEmployee = require("./models/webmodels/DB_models/addEmp.js");
+var removeManager = require("./models/webmodels/DB_models/addEmp.js");
+var removeInventory = require("./models/webmodels/DB_models/addEmp.js");
+
+
 module.exports = function(app, passport){
 	
 	app.use(cors());
@@ -20,12 +29,12 @@ module.exports = function(app, passport){
 	need to work on this some more to ensure that the mongoose schema is correct*/
 	 app.post('/login', function (req, res, next) {
 			
-			 console.log(req)
+			 //console.log(req)
 			 next()
 		 },
 		 passport.authenticate('local-login'),
 		 (req, res) => {
-			 console.log('logged in', req.user);
+			 //console.log('logged in', req.user);
 			 var userInfo = {
 				 user: req.user
              };
@@ -74,12 +83,12 @@ module.exports = function(app, passport){
 	})
 	
 	app.get('/user/:business', function(req, res){
-		console.log('req.params data: ' + req.params.business);
-		console.log('Whatever is in connect.temp: ' + Connect.temp.businesses);
+		//console.log('req.params data: ' + req.params.business);
+		//console.log('Whatever is in connect.temp: ' + Connect.temp.businesses);
 
 		for (var count = 0; count < Connect.temp.businesses.length; count++) {
 			if (req.params.business == Connect.temp.businesses[count].businessName) {
-				console.log('Business sent: ' + Connect.temp.businesses[count]);
+				//console.log('Business sent: ' + Connect.temp.businesses[count]);
 				res.send(Connect.temp.businesses[count]);
 					//businessData[count] = Connect.temp.businesses[count].businessName;
 					//businessData[count] = Connect.temp.businesses[count].phoneAbrv;
@@ -93,32 +102,116 @@ module.exports = function(app, passport){
 
 	app.post('/addBusiness', function(req, res){
 		var username = Connect.temp.username
-		console.log("Add Business Route: ");
-		console.log("    Business Name: " + req.body.businessName);
-		console.log("    Phone Abrv: " + req.body.phoneAbrv);
-		console.log("    Username: " + Connect.temp.username);
+		//console.log("Add Business Route: ");
+		//console.log("    Business Name: " + req.body.businessName);
+		//console.log("    Phone Abrv: " + req.body.phoneAbrv);
+		//console.log("    Username: " + Connect.temp.username);
 		Create.main(Connect.temp.username, [req.body.businessName, req.body.phoneAbrv]);
-		console.log(Connect.temp)
+		//console.log(Connect.temp)
 		function test(){
 			getUser.main(username);
 		}
 		setTimeout(test, 3000)
 	})
-	
-
-
 
     app.post('/removeBusiness', function (req, res) {
     var username = Connect.temp.username
-    console.log("Remove Business Route: ");
-    console.log("    Business Name: " + req.body.businessName);
-    console.log("    Username: " + Connect.temp.username);
+    //console.log("Remove Business Route: ");
+    //console.log("    Business Name: " + req.body.businessName);
+    //console.log("    Username: " + Connect.temp.username);
     Delete.main(Connect.temp.username, req.body.businessName);
-    console.log(Connect.temp)
+    //console.log(Connect.temp)
     function test() {
         getUser.main(username);
     }
     setTimeout(test, 3000)
+    })
+
+    app.post('/addEmployee', function (req, res) {
+        var username = Connect.temp.username
+        console.log("    Business Name: " + req.body.businessName);
+
+        console.log("    Username: " + Connect.temp.username);
+        console.log("Req Body: " + req.body);
+        createEmployee.main(Connect.temp.username, req.body.businessName, [
+            req.body.ssn,
+            req.body.fname,
+            req.body.lname,
+            req.body.contact,
+            req.body.address,
+            req.body.pay,
+            req.body.group,
+        ]);
+        //console.log(Connect.temp)
+        function test() {
+            getUser.main(username);
+        }
+        setTimeout(test, 100)
+    })
+
+    app.post('/removeEmployee', function (req, res) {
+        var username = Connect.temp.username
+        //console.log("Remove Business Route: ");
+        //console.log("    Business Name: " + req.body.businessName);
+        //console.log("    Username: " + Connect.temp.username);
+        removeEmployee.main(Connect.temp.username, req.body.businessName);
+        //console.log(Connect.temp)
+        function test() {
+            getUser.main(username);
+        }
+        setTimeout(test, 3000)
+    })
+
+    app.post('/addManager', function (req, res) {
+        var username = Connect.temp.username
+        //console.log("Remove Business Route: ");
+        //console.log("    Business Name: " + req.body.businessName);
+        //console.log("    Username: " + Connect.temp.username);
+        createManager.main(Connect.temp.username, req.body.businessName);
+        //console.log(Connect.temp)
+        function test() {
+            getUser.main(username);
+        }
+        setTimeout(test, 3000)
+    })
+
+    app.post('/removeManager', function (req, res) {
+        var username = Connect.temp.username
+        //console.log("Remove Business Route: ");
+        //console.log("    Business Name: " + req.body.businessName);
+        //console.log("    Username: " + Connect.temp.username);
+        removeManager.main(Connect.temp.username, req.body.businessName);
+        //console.log(Connect.temp)
+        function test() {
+            getUser.main(username);
+        }
+        setTimeout(test, 3000)
+    })
+
+    app.post('/addInventory', function (req, res) {
+        var username = Connect.temp.username
+        //console.log("Remove Business Route: ");
+        //console.log("    Business Name: " + req.body.businessName);
+        //console.log("    Username: " + Connect.temp.username);
+        createInventory.main(Connect.temp.username, req.body.businessName);
+        //console.log(Connect.temp)
+        function test() {
+            getUser.main(username);
+        }
+        setTimeout(test, 3000)
+    })
+
+    app.post('/removeInventory', function (req, res) {
+        var username = Connect.temp.username
+        //console.log("Remove Business Route: ");
+        //console.log("    Business Name: " + req.body.businessName);
+        //console.log("    Username: " + Connect.temp.username);
+        removeInventory.main(Connect.temp.username, req.body.businessName);
+        //console.log(Connect.temp)
+        function test() {
+            getUser.main(username);
+        }
+        setTimeout(test, 3000)
     })
 
 	};

@@ -10,6 +10,8 @@ class register extends Component {
 	this.state = {
       username: '',
 	  password: '',
+      email: '',
+	  phoneNum: '',
 	  redirectTo: null
     }
    
@@ -34,7 +36,9 @@ class register extends Component {
         axios
             .post('http://localhost:8080/signup', {
                 username: this.state.username,
-                password: this.state.password
+                password: this.state.password,
+                email: this.state.email,
+                phone: this.state.phoneNum
             })
             .then(response => {
                 console.log('login response: ')
@@ -73,27 +77,39 @@ class register extends Component {
 	render() {
 			return <div class = "form-group"> 
 
-                      <p style={{fontSize: 20}} > Login </p>
+                      <p style={{fontSize: 20}} > register </p>
 					 
                      <form onSubmit={this.onSubmit}>
                           <div class="imgcontainer">
                          
                           </div>
 
-                          	<form action="/user">
-                                <button type="submit"> Temp Access to home </button>
-                            </form>
-
                           <div class="container">
                             <label for="uname"><b>Username</b></label>
+                            <input className="form-input" type="text" id="username" name="username" placeholder="Username" value={this.state.username} onChange={this.handleChange} />
+
+  
+                            <label for="email"><b>Email Address</b></label>
                             <input className="form-input"
                                     type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="Username"
-                                    value={this.state.username}
+                                    id="email"
+                                    name="email"
+                                    placeholder="Email Address"
+                                    value={this.state.email}
                                     onChange={this.handleChange}
                                 />
+
+                            
+                            <label for="phoneNum"><b>Phone Number</b></label>
+                            <input className="form-input"
+                                    type="text"
+                                    id="phoneNum"
+                                    name="phoneNum"
+                                    placeholder="Phone Number"
+                                    value={this.state.phoneNum}
+                                    onChange={this.handleChange}
+                                />
+                       
 
                             <label for="psw"><b>Password</b></label>
                             <input className="form-input"
