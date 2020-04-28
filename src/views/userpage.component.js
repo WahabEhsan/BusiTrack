@@ -7,7 +7,9 @@ import Cards from "./businessCards.component";
 import business from "./business.component";
 import AddBusiness from "./businessPages/addBusiness.component";
 
-import settings from "./settings.component.js";export default class home extends Component {
+import settings from "./settings.component.js";
+
+export default class home extends Component {
     constructor(props) {
         super(props);
 

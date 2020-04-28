@@ -53,6 +53,8 @@ class register extends Component {
                     this.setState({
                         redirectTo: '/'
                     })
+
+                    window.location.replace("/user");  
                 }
             }).catch(error => {
                 console.log('login error: ')

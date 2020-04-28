@@ -30,10 +30,10 @@ class addManager extends React.Component {
         axios
             .post('http://localhost:8080/addManager', {
                     theBusinessName: this.state.theBusinessName,
+                    ssn: this.state.ssn,
                     fname: this.state.fname,
                     lname: this.state.lname,
-                    group: this.state.group,
-                    ssn: this.state.ssn
+                    group: this.state.group
             }).then(response => {
             }).catch(err => console.log(err))
 
@@ -81,7 +81,7 @@ handleChange(event) { this.setState({ [event.target.name] : event.target.value }
                                                    <input id="ssn" name="ssn" onChange={this.handleChange} value={this.state.ssn} />
 
 
-                                                  <button type="submit">Add Employee</button>
+                                                  <button type="submit">Add Manager</button>
                                             </form> 
                                     :null}
                                 </div>

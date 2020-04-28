@@ -168,10 +168,10 @@ module.exports = function(app, passport){
         //console.log("    Business Name: " + req.body.businessName);
         //console.log("    Username: " + Connect.temp.username);
         createManager.main(Connect.temp.username, req.body.theBusinessName, [
+            req.body.ssn,
             req.body.fname,
             req.body.lname,
-            req.body.group,
-            req.body.ssn
+            req.body.group
             ]);
         //console.log(Connect.temp)
         function test() {

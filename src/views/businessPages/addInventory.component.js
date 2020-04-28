@@ -33,7 +33,7 @@ class addInventory extends React.Component {
                     itemNumber: this.state.itemNumber,
                     itemName: this.state.itemName,
                     itemPrice: this.state.itemPrice,
-                    stock: this.state.stock,
+                    stock: this.state.stock
             }).then(response => {
             }).catch(err => console.log(err))
 

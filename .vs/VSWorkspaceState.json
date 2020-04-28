@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app\\models",
     "\\src",
     "\\src\\views",
     "\\src\\views\\businessPages"
   ],
-  "SelectedNode": "\\src\\views\\businessPages\\removeBusiness.component.js",
+  "SelectedNode": "\\src\\views\\userpage.component.js",
   "PreviewInSolutionExplorer": false
 }
