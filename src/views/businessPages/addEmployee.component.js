@@ -19,10 +19,9 @@ class addEmployee extends React.Component {
             group: "",
             username: this.props.username,
             showMe: false,
-            businessName: this.props.businessName
+            businessName: this.props.businessName,
+            theBusinessName: ""
 		}
-
-        console.log(this.state.businessName);
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -33,7 +32,7 @@ class addEmployee extends React.Component {
 
         axios
             .post('http://localhost:8080/addEmployee', {
-                    businessName: this.state.businessName,
+                    theBusinessName: this.state.theBusinessName,
                     ssn: this.state.ssn,
                     fname: this.state.fname,
                     lname: this.state.lname,
@@ -72,7 +71,9 @@ handleChange(event) { this.setState({ [event.target.name] : event.target.value }
                                     {this.state.showMe?
                                              <form id="form" onSubmit={this.handleSubmit} method="post" noValidate>
                                                 <br />
-                            
+                                                   <label for="bName"><b>Business name: </b></label>
+                                                   <input id="bName" name="theBusinessName" onChange={this.handleChange} value={this.state.theBusinessName} />
+
 
                                                    <label for="ssn"><b>Social Security Number: </b></label>
                                                    <input id="ssn" name="ssn" onChange={this.handleChange} value={this.state.ssn} />
@@ -89,10 +90,10 @@ handleChange(event) { this.setState({ [event.target.name] : event.target.value }
                                                     <label for="address"><b>Address:</b></label>
                                                    <input id="address" name="address" onChange={this.handleChange} value={this.state.address}/>
 
-                                                   <label for="pay"><b>:</b></label>
+                                                   <label for="pay"><b>Pay:</b></label>
                                                    <input id="pay" name="pay" onChange={this.handleChange} value={this.state.pay}/>
 
-                                                   <label for="group"><b>Enter Business Name Phone Abbreviation:</b></label>
+                                                   <label for="group"><b>Group:</b></label>
                                                    <input id="group" name="group" onChange={this.handleChange} value={this.state.group}/>
 
                                                   <button type="submit">Add Employee</button>

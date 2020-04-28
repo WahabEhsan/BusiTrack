@@ -129,11 +129,11 @@ module.exports = function(app, passport){
 
     app.post('/addEmployee', function (req, res) {
         var username = Connect.temp.username
-        console.log("    Business Name: " + req.body.businessName);
+        console.log("    Business Name: " + req.body.theBusinessName);
 
-        console.log("    Username: " + Connect.temp.username);
+        console.log("    Username: " + req.body.username);
         console.log("Req Body: " + req.body);
-        createEmployee.main(Connect.temp.username, req.body.businessName, [
+        createEmployee.main(Connect.temp.username, req.body.theBusinessName, [
             req.body.ssn,
             req.body.fname,
             req.body.lname,
