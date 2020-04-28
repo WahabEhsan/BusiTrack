@@ -1,0 +1,87 @@
+﻿
+		
+.businessCard {
+	height: 200px;
+	width: 200px;
+	float: left;
+			
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+			
+	margin-top:10px;
+	margin-right:10px;
+	margin-bottom:10px;
+	margin-left:10px;
+			
+	background-color: #d3d3d3;
+}
+		
+.businessCardBanner {
+	height: 40%;
+	width: 100%;
+	float: left;
+	text-align: center;
+	font-weight: bold;
+	font-size: 30px;
+
+
+	border-style: outset;
+	border-color: gray;
+	border-width: 3px;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
+		
+.businessCardInfo {
+	height: 50%;
+	width: 50%;
+	float: left;
+			
+	background-color: #d3d3d3;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+		
+.businessCard:hover {
+	opacity: 0.5;
+	background-color: #ffffff;
+}
+
+
+.businessButtons {
+	width: 100%;
+	float: right;
+
+}
+
+.add {
+	height: 30px;
+	width: 130px;
+	float: left;
+			
+	border-radius: 10px;
+
+	background-color: #d3d3d3;
+}
+
+.remove {
+	height: 30px;
+	width: 130px;
+	float: right;
+			
+	border-radius: 10px;
+
+	background-color: #d3d3d3;
+}
+
+.add:hover {
+	opacity: 0.1;
+	background-color: #B5BDC4;
+}
+
+.remove:hover {
+	opacity: 0.1;
+	background-color: #B5BDC4;
+}
