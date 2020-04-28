@@ -10,12 +10,12 @@ var getUser = require("./models/webmodels/DB_models/getUser.js");
 var bodyParser = require('body-parser');
 
 var createEmployee = require("./models/webmodels/DB_models/addEmp.js");
-var createManager = require("./models/webmodels/DB_models/addEmp.js");
-var createInventory = require("./models/webmodels/DB_models/addEmp.js");
+var createManager = require("./models/webmodels/DB_models/addMan.js");
+var createInventory = require("./models/webmodels/DB_models/addInv.js");
 
-var removeEmployee = require("./models/webmodels/DB_models/addEmp.js");
-var removeManager = require("./models/webmodels/DB_models/addEmp.js");
-var removeInventory = require("./models/webmodels/DB_models/addEmp.js");
+var removeEmployee = require("./models/webmodels/DB_models/deleteEmp.js");
+var removeManager = require("./models/webmodels/DB_models/deleteMan.js");
+var removeInventory = require("./models/webmodels/DB_models/deleteInv");
 
 
 module.exports = function(app, passport){
@@ -111,7 +111,7 @@ module.exports = function(app, passport){
 		function test(){
 			getUser.main(username);
 		}
-		setTimeout(test, 3000)
+		setTimeout(test, 100)
 	})
 
     app.post('/removeBusiness', function (req, res) {
@@ -154,12 +154,12 @@ module.exports = function(app, passport){
         //console.log("Remove Business Route: ");
         //console.log("    Business Name: " + req.body.businessName);
         //console.log("    Username: " + Connect.temp.username);
-        removeEmployee.main(Connect.temp.username, req.body.businessName);
+        removeEmployee.main(Connect.temp.username, [req.body.theBusinessName, req.body.ssn]);
         //console.log(Connect.temp)
         function test() {
             getUser.main(username);
         }
-        setTimeout(test, 3000)
+        setTimeout(test, 100)
     })
 
     app.post('/addManager', function (req, res) {
@@ -167,12 +167,17 @@ module.exports = function(app, passport){
         //console.log("Remove Business Route: ");
         //console.log("    Business Name: " + req.body.businessName);
         //console.log("    Username: " + Connect.temp.username);
-        createManager.main(Connect.temp.username, req.body.businessName);
+        createManager.main(Connect.temp.username, req.body.theBusinessName, [
+            req.body.fname,
+            req.body.lname,
+            req.body.group,
+            req.body.ssn
+            ]);
         //console.log(Connect.temp)
         function test() {
             getUser.main(username);
         }
-        setTimeout(test, 3000)
+        setTimeout(test, 100)
     })
 
     app.post('/removeManager', function (req, res) {
@@ -180,12 +185,12 @@ module.exports = function(app, passport){
         //console.log("Remove Business Route: ");
         //console.log("    Business Name: " + req.body.businessName);
         //console.log("    Username: " + Connect.temp.username);
-        removeManager.main(Connect.temp.username, req.body.businessName);
+        removeManager.main(Connect.temp.username, [req.body.theBusinessName, req.body.ssn]);
         //console.log(Connect.temp)
         function test() {
             getUser.main(username);
         }
-        setTimeout(test, 3000)
+        setTimeout(test, 100)
     })
 
     app.post('/addInventory', function (req, res) {
@@ -193,12 +198,17 @@ module.exports = function(app, passport){
         //console.log("Remove Business Route: ");
         //console.log("    Business Name: " + req.body.businessName);
         //console.log("    Username: " + Connect.temp.username);
-        createInventory.main(Connect.temp.username, req.body.businessName);
+        createInventory.main(Connect.temp.username, req.body.theBusinessName, [
+            req.body.itemNumber,
+            req.body.itemName,
+            req.body.itemPrice,
+            req.body.stock
+            ]);
         //console.log(Connect.temp)
         function test() {
             getUser.main(username);
         }
-        setTimeout(test, 3000)
+        setTimeout(test, 100)
     })
 
     app.post('/removeInventory', function (req, res) {
@@ -206,12 +216,12 @@ module.exports = function(app, passport){
         //console.log("Remove Business Route: ");
         //console.log("    Business Name: " + req.body.businessName);
         //console.log("    Username: " + Connect.temp.username);
-        removeInventory.main(Connect.temp.username, req.body.businessName);
+        removeInventory.main(Connect.temp.username, [req.body.theBusinessName, req.body.itemNumber]);
         //console.log(Connect.temp)
         function test() {
             getUser.main(username);
         }
-        setTimeout(test, 3000)
+        setTimeout(test, 100)
     })
 
 	};

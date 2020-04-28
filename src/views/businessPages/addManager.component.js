@@ -5,18 +5,15 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import '../home.css';
 import axios from 'axios';
 
-class addEmployee extends React.Component {
+class addManager extends React.Component {
 	constructor(props) {
         super(props);
 
         this.state = {
-            ssn: "",
             fname: "",
             lname: "",
-            contact: "",
-            address: "",
-            pay: "",
             group: "",
+            ssn: "",
             username: this.props.username,
             showMe: false,
             businessName: this.props.businessName,
@@ -31,15 +28,12 @@ class addEmployee extends React.Component {
         event.preventDefault()
 
         axios
-            .post('http://localhost:8080/addEmployee', {
+            .post('http://localhost:8080/addManager', {
                     theBusinessName: this.state.theBusinessName,
-                    ssn: this.state.ssn,
                     fname: this.state.fname,
                     lname: this.state.lname,
-                    contact: this.state.contact,
-                    address: this.state.address,
-                    pay: this.state.pay,
-                    group: this.state.group
+                    group: this.state.group,
+                    ssn: this.state.ssn
             }).then(response => {
             }).catch(err => console.log(err))
 
@@ -64,9 +58,9 @@ handleChange(event) { this.setState({ [event.target.name] : event.target.value }
         return (            
             
        
-                                <div className = "addEmployee">
+                                <div className = "addManager">
 
-		                            <label type="button" className="add" onClick={()=>this.operation()}>Add Employee</label>
+		                            <label type="button" className="add" onClick={()=>this.operation()}>Add Manager</label>
          
                                     {this.state.showMe?
                                              <form id="form" onSubmit={this.handleSubmit} method="post" noValidate>
@@ -74,26 +68,18 @@ handleChange(event) { this.setState({ [event.target.name] : event.target.value }
                                                    <label for="bName"><b>Business name: </b></label>
                                                    <input id="bName" name="theBusinessName" onChange={this.handleChange} value={this.state.theBusinessName} />
 
-                                                   <label for="ssn"><b>Social Security Number: </b></label>
-                                                   <input id="ssn" name="ssn" onChange={this.handleChange} value={this.state.ssn} />
-
                                                    <label for="fname"><b>First Name:</b></label>
                                                    <input id="fname" name="fname" onChange={this.handleChange} value={this.state.fname}/>
 
                                                    <label for="lname"><b>Last Name:</b></label>
                                                    <input id="lname" name="lname" onChange={this.handleChange} value={this.state.lname}/>
 
-                                                   <label for="contact"><b>Contact Number:</b></label>
-                                                   <input id="contact" name="contact" onChange={this.handleChange} value={this.state.contact}/>
-
-                                                    <label for="address"><b>Address:</b></label>
-                                                   <input id="address" name="address" onChange={this.handleChange} value={this.state.address}/>
-
-                                                   <label for="pay"><b>Pay:</b></label>
-                                                   <input id="pay" name="pay" onChange={this.handleChange} value={this.state.pay}/>
-
                                                    <label for="group"><b>Group:</b></label>
                                                    <input id="group" name="group" onChange={this.handleChange} value={this.state.group}/>
+
+                                                   <label for="ssn"><b>Social Security Number: </b></label>
+                                                   <input id="ssn" name="ssn" onChange={this.handleChange} value={this.state.ssn} />
+
 
                                                   <button type="submit">Add Employee</button>
                                             </form> 
@@ -103,4 +89,4 @@ handleChange(event) { this.setState({ [event.target.name] : event.target.value }
     }
 }
 
-export default addEmployee;
+export default addManager;

@@ -6,6 +6,12 @@ import './businesses.css';
 import RemoveBusiness from "./removeBusiness.component";
 
 import AddEmployee from "./addEmployee.component";
+import AddManager from "./addManager.component";
+import AddInventory from "./addInventory.component";
+
+import RemoveEmployee from "./removeEmployee.component";
+import RemoveManager from "./removeManager.component";
+import RemoveInventory from "./removeInventory.component";
 
 class business extends React.Component {
      constructor(props) {
@@ -132,6 +138,7 @@ class business extends React.Component {
                                 <label for="Employee"><b>Business Employees</b></label>
                                 
                                 <AddEmployee businessName = {this.state.businessName} />
+                                <RemoveEmployee businessName = {this.state.businessName} />
                                 <br />
 
                                 <table>
@@ -142,7 +149,7 @@ class business extends React.Component {
                                         <th>Address</th>
                                         <th>Pay</th>
                                         <th>Group</th>
-                                        <th>Last 4 SSN</th>
+                                        <th>SSN</th>
                                     </tr>
 
                                     
@@ -164,11 +171,16 @@ class business extends React.Component {
 
                                 <label for="manager"><b>Business Manager</b></label>
 
+                                <AddManager businessName = {this.state.businessName} />
+                                <RemoveManager businessName = {this.state.businessName} />
+                                <br />
+
                                <table>
                                     <tr>
                                         <th>First Name</th>
                                         <th>Last Name</th>
                                         <th>Group</th>
+                                        <th>SSN</th>
                                     </tr>
 
                                     
@@ -178,6 +190,7 @@ class business extends React.Component {
                                         <td>{item.fName}</td>
                                         <td>{item.lName}</td>
                                         <td>{item.group}</td>
+                                        <td>{item.ssn}</td>
                                     
                                  </tr>
                                 )}
@@ -185,6 +198,10 @@ class business extends React.Component {
                                 </table>
 
                                 <label for="inventory"><b>Business inventory</b></label>
+                               
+
+                                 <AddInventory businessName = {this.state.businessName} />
+                                  <RemoveInventory businessName = {this.state.businessName} />
 
                                 <table>
                                     <tr>
